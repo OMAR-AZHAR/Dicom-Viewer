@@ -1,67 +1,63 @@
-import React, { PureComponent } from 'react'
-// import UiOpenMenu from './demo/ui/UiOpenMenu'
-import { ReactComponent as InvertHoverComponent } from './SvgComponents/invert-hover.svg'
-import { ReactComponent as PanHoverComponent } from './SvgComponents/pan-hover.svg'
-import { ReactComponent as MagnifyHoverComponent } from './SvgComponents/magnify-hover.svg'
-import { ReactComponent as ZoomHoverComponent } from './SvgComponents/zoom-hover.svg'
-import { ReactComponent as AngleComponent } from './SvgComponents/Angle-hover.svg'
-import { ReactComponent as FreehandComponent } from './SvgComponents/Freehand-hover.svg'
-import { ReactComponent as RectComponent } from './SvgComponents/Rectangle-hover.svg'
-import { ReactComponent as LengthComponent } from './SvgComponents/Length-hover.svg'
-import { ReactComponent as CircleComponent } from './SvgComponents/circle.svg'
-import { ReactComponent as MarkComponent } from './SvgComponents/Mark-hover.svg'
-//import { ReactComponent as RotateComponent } from './SvgComponents/Rotate-hover.svg'
-import ProgressBar from './ProgressBar'
-import { withStyles } from '@material-ui/core/styles'
-import { connect } from 'react-redux'
-import AboutDlg from './components/AboutDlg'
-import Dicomdir from './components/Dicomdir'
-import DicomViewer from './components/DicomViewer'
-import DicomHeader from './components/DicomHeader'
-import DownloadZipDlg from './components/DownloadZipDlg'
-import Explorer from './components/Explorer'
-import FsUI from './components/FsUI'
-import Histogram from './components/Histogram'
-import LayoutTool from './components/LayoutTool'
-import ToolsPanel from './components/ToolsPanel'
-import Measurements from './components/Measurements'
-import OpenMultipleFilesDlg from './components/OpenMultipleFilesDlg'
-import Settings from './components/Settings'
-import AppBar from '@material-ui/core/AppBar'
-import Collapse from '@material-ui/core/Collapse'
-import Button from '@material-ui/core/Button'
-import Dialog from '@material-ui/core/Dialog'
-import DialogActions from '@material-ui/core/DialogActions'
-import DialogContent from '@material-ui/core/DialogContent'
-import DialogContentText from '@material-ui/core/DialogContentText'
-import DialogTitle from '@material-ui/core/DialogTitle'
-import Divider from '@material-ui/core/Divider'
-import Drawer from '@material-ui/core/Drawer'
-import ExpandLess from '@material-ui/icons/ExpandLess'
-import ExpandMore from '@material-ui/icons/ExpandMore'
-import Icon from '@mdi/react'
-import IconButton from '@material-ui/core/IconButton'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
-import MenuIcon from '@material-ui/icons/Menu'
-import Popover from '@material-ui/core/Popover'
-import Slider from '@material-ui/core/Slider'
-import Snackbar from '@material-ui/core/Snackbar'
-import TextField from '@material-ui/core/TextField'
-import Toolbar from '@material-ui/core/Toolbar'
-import Tooltip from '@material-ui/core/Tooltip'
-import Typography from '@material-ui/core/Typography'
-import 'react-perfect-scrollbar/dist/css/styles.css'
-import PerfectScrollbar from 'react-perfect-scrollbar'
-// import UiViewMode from './demo/ui/UiViewMode'
-import Graphics3d from './demo/engine/Graphics3d'
+import React, { PureComponent } from "react";
 
-import {
-  isMobile,
-  isTablet,
-} from 'react-device-detect'
+// import UiOpenMenu from './demo/ui/UiOpenMenu'
+import { ReactComponent as InvertHoverComponent } from "./SvgComponents/invert-hover.svg";
+import { ReactComponent as PanHoverComponent } from "./SvgComponents/pan-hover.svg";
+import { ReactComponent as MagnifyHoverComponent } from "./SvgComponents/magnify-hover.svg";
+import { ReactComponent as ZoomHoverComponent } from "./SvgComponents/zoom-hover.svg";
+import { ReactComponent as AngleComponent } from "./SvgComponents/Angle-hover.svg";
+import { ReactComponent as FreehandComponent } from "./SvgComponents/Freehand-hover.svg";
+import { ReactComponent as RectComponent } from "./SvgComponents/Rectangle-hover.svg";
+import { ReactComponent as LengthComponent } from "./SvgComponents/Length-hover.svg";
+import { ReactComponent as CircleComponent } from "./SvgComponents/circle.svg";
+import { ReactComponent as MarkComponent } from "./SvgComponents/Mark-hover.svg";
+//import { ReactComponent as RotateComponent } from './SvgComponents/Rotate-hover.svg'
+import ProgressBar from "./ProgressBar";
+import { withStyles } from "@material-ui/core/styles";
+import { connect } from "react-redux";
+import AboutDlg from "./components/AboutDlg";
+import Dicomdir from "./components/Dicomdir";
+import DicomViewer from "./components/DicomViewer";
+import DicomHeader from "./components/DicomHeader";
+import DownloadZipDlg from "./components/DownloadZipDlg";
+import Explorer from "./components/Explorer";
+import FsUI from "./components/FsUI";
+import Histogram from "./components/Histogram";
+import LayoutTool from "./components/LayoutTool";
+import ToolsPanel from "./components/ToolsPanel";
+import Measurements from "./components/Measurements";
+import OpenMultipleFilesDlg from "./components/OpenMultipleFilesDlg";
+import Settings from "./components/Settings";
+import AppBar from "@material-ui/core/AppBar";
+import Collapse from "@material-ui/core/Collapse";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import Divider from "@material-ui/core/Divider";
+import Drawer from "@material-ui/core/Drawer";
+import ExpandLess from "@material-ui/icons/ExpandLess";
+import ExpandMore from "@material-ui/icons/ExpandMore";
+import Icon from "@mdi/react";
+import IconButton from "@material-ui/core/IconButton";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import MenuIcon from "@material-ui/icons/Menu";
+import Popover from "@material-ui/core/Popover";
+import Slider from "@material-ui/core/Slider";
+import Snackbar from "@material-ui/core/Snackbar";
+import TextField from "@material-ui/core/TextField";
+import Toolbar from "@material-ui/core/Toolbar";
+import Tooltip from "@material-ui/core/Tooltip";
+import Typography from "@material-ui/core/Typography";
+import "react-perfect-scrollbar/dist/css/styles.css";
+import PerfectScrollbar from "react-perfect-scrollbar";
+
+import { isMobile, isTablet } from "react-device-detect";
 
 import {
   clearStore,
@@ -77,7 +73,7 @@ import {
   setVolume,
   filesStore,
   explorerActiveSeriesIndex,
-} from './actions/index'
+} from "./actions/index";
 
 import {
   log,
@@ -96,7 +92,7 @@ import {
   getDicomImageXOnRows,
   groupBy,
   objectIsEmpty,
-} from './functions'
+} from "./functions";
 
 import {
   mdiAnimationOutline,
@@ -116,7 +112,6 @@ import {
   mdiFileCad,
   mdiFolder,
   //mdiFolderMultiple,
-
   mdiCog,
   mdiViewGridPlusOutline,
   mdiImageEdit,
@@ -125,7 +120,6 @@ import {
   // mdiMagnify,
   mdiFolderOpen,
   mdiRefresh,
-
   mdiTools,
   mdiTrashCanOutline,
   mdiVectorLink,
@@ -137,23 +131,22 @@ import {
   mdiSkipForward,
   mdiSkipNext,
   mdiSkipPrevious,
-} from '@mdi/js'
+} from "@mdi/js";
 
-import './App.css'
-
+import "./App.css";
 
 //import * as cornerstoneTools from "cornerstone-tools"
 
-log()
+log();
 
 //localStorage.setItem("debug", "cornerstoneTools")
 
-const drawerWidth = 240
-const iconColor = '#FFFFFF'
-const activeColor = 'rgba(0, 255, 0, 1.0)'
+const drawerWidth = 240;
+const iconColor = "#FFFFFF";
+const activeColor = "rgba(0, 255, 0, 1.0)";
 
-const styles = theme => ({
-  '@global': {
+const styles = (theme) => ({
+  "@global": {
     body: {
       backgroundColor: theme.palette.common.black,
     },
@@ -164,7 +157,7 @@ const styles = theme => ({
   },
 
   root: {
-    display: 'flex',
+    display: "flex",
   },
 
   menuButton: {
@@ -176,9 +169,9 @@ const styles = theme => ({
   },
 
   appBar: {
-    position: 'relative',
+    position: "relative",
     zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
+    transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
@@ -187,38 +180,38 @@ const styles = theme => ({
   appBarShift: {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
+    transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
 
   hide: {
-    display: 'none',
+    display: "none",
   },
 
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
-    whiteSpace: 'nowrap',
+    whiteSpace: "nowrap",
   },
 
   drawerOpen: {
     width: drawerWidth,
-    transition: theme.transitions.create('width', {
+    transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
 
   drawerClose: {
-    transition: theme.transitions.create('width', {
+    transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    overflowX: 'hidden',
+    overflowX: "hidden",
     width: theme.spacing(7) + 1,
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up("sm")]: {
       width: theme.spacing(9) + 1,
     },
   },
@@ -229,68 +222,66 @@ const styles = theme => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
-
   },
 
   listItemText: {
-    fontSize: '0.85em',
-    marginLeft: '-20px',
+    fontSize: "0.85em",
+    marginLeft: "-20px",
   },
-
-})
+});
 
 class App extends PureComponent {
-
   constructor(props) {
-    super(props)
-    this.files = []
-    this.folder = null
-    this.file = null
-    this.url = null
-    this.explorer = null
-    this.series = null
+    super(props);
+    this.files = [];
+    this.folder = null;
+    this.file = null;
+    this.url = null;
+    this.explorer = null;
+    this.series = null;
 
-    this.mprData = {}
-    this.mprPlane = ''
-    this.echoNumber = 0
+    this.mprData = {};
+    this.mprPlane = "";
+    this.echoNumber = 0;
+    // this.m_needMode3dLight = true;
 
-    this.volume = []
+    // this.onMode3dLight = this.onMode3dLight.bind(this);
+    this.volume = [];
 
-    this.fileOpen = React.createRef()
-    this.showFileOpen = this.showFileOpen.bind(this)
+    this.fileOpen = React.createRef();
+    this.showFileOpen = this.showFileOpen.bind(this);
 
-    this.openDicomdir = React.createRef()
-    this.showOpenDicomdir = this.showOpenDicomdir.bind(this)
+    this.openDicomdir = React.createRef();
+    this.showOpenDicomdir = this.showOpenDicomdir.bind(this);
 
-    this.openFolder = React.createRef()
-    this.showOpenFolder = this.showOpenFolder.bind(this)
+    this.openFolder = React.createRef();
+    this.showOpenFolder = this.showOpenFolder.bind(this);
 
-    this.openUrlField = React.createRef()
+    this.openUrlField = React.createRef();
 
-    this.dicomViewersActive = []
-    this.dicomViewersActiveSameStudy = []
-    this.dicomViewersActiveSamePlane = []
-    this.dicomViewersRefs = []
-    this.dicomViewers = []
+    this.dicomViewersActive = [];
+    this.dicomViewersActiveSameStudy = [];
+    this.dicomViewersActiveSamePlane = [];
+    this.dicomViewersRefs = [];
+    this.dicomViewers = [];
     for (let i = 0; i < 16; i++) {
-      this.dicomViewers.push(this.setDcmViewer(i))
+      this.dicomViewers.push(this.setDcmViewer(i));
     }
 
-    this.activeDcmViewersNum = 0
+    this.activeDcmViewersNum = 0;
 
-    this.referenceLines = {}
+    this.referenceLines = {};
   }
 
   state = {
     anchorElLayout: null,
     anchorElToolsPanel: null,
-   // openMenu: false,
     openImageEdit: false,
     openTools: false,
     mprMenu: false,
     mprMode: false,
-    textMessage: '',
-    titleMessage: '',
+    textMessage: "",
+    titleMessage: "",
     visibleMainMenu: true,
     visibleHeader: false,
     visibleSettings: false,
@@ -307,12 +298,12 @@ class App extends PureComponent {
     visibleDownloadZipDlg: false,
     visibleOpenMultipleFilesDlg: false,
     toolState: 1,
-    toolActive: 'notool',
+    toolActive: "notool",
     sliceIndex: 0,
     sliceMax: 1,
     listOpenFilesScrolling: false,
     visibleVolumeBuilding: false,
-    visibleMpr3D: false,
+    // visibleMpr3D: false,
     visibleMprOrthogonal: false,
     visibleMprCoronal: false,
     visibleMprSagittal: false,
@@ -321,18 +312,30 @@ class App extends PureComponent {
     visibleMessage: false,
     visibleReferenceLines: true,
     visibleSeriesLink: true,
-  }
+  };
 
+  // onMode(indexMode) {
+  //   const store = this.props;
+  //   store.dispatch({
+  //     type: StoreActionType.SET_MODE_VIEW,
+  //     modeView: indexMode,
+  //   });
+  // }
 
+  // onMode3dLight() {
+  //   this.onMode(ModeView.VIEW_3D_LIGHT);
+  // }
 
   setDcmViewer = (index) => {
     return (
       <DicomViewer
-        dcmRef={(ref) => { this.dicomViewersRefs[index] = ref }}
+        dcmRef={(ref) => {
+          this.dicomViewersRefs[index] = ref;
+        }}
         index={index}
         dicomViewersRefs={this.dicomViewersRef}
-        runTool={ref => (this.runTool = ref)}
-        changeTool={ref => (this.changeTool = ref)}
+        runTool={(ref) => (this.runTool = ref)}
+        changeTool={(ref) => (this.changeTool = ref)}
         onLoadedImage={this.onLoadedImage}
         onRenderedImage={this.onRenderedImage}
         listOpenFilesPreviousFrame={this.listOpenFilesPreviousFrame}
@@ -340,198 +343,231 @@ class App extends PureComponent {
         overlay={true}
         visible={true}
       />
-    )
-  }
+    );
+  };
 
-
-  onLoadedImage = () => {
-    //console.log('App - onLoadedImage: ')
-
-  }
+  onLoadedImage = () => {};
 
   onRenderedImage = (index) => {
-    //console.log('App - onRenderedImage: ', index)
-
-    if (this.referenceLines.crossViewer !== undefined &&
-      this.state.visibleReferenceLines
-      && this.isSliceChange
-      && this.referenceLines.crossViewer.layoutIndex === index) {
-      this.isSliceChange = false
-      this.referenceLinesShow()
+    if (
+      this.referenceLines.crossViewer !== undefined &&
+      this.state.visibleReferenceLines &&
+      this.isSliceChange &&
+      this.referenceLines.crossViewer.layoutIndex === index
+    ) {
+      this.isSliceChange = false;
+      this.referenceLinesShow();
     }
-  }
+  };
 
   getDcmViewerRef = (index) => {
-    return this.dicomViewersRefs[index]
-  }
+    return this.dicomViewersRefs[index];
+  };
 
   getDcmViewer = (index) => {
-    return this.dicomViewers[index]
-  }
+    return this.dicomViewers[index];
+  };
 
   getActiveDcmViewer = () => {
-    return this.dicomViewersRefs[this.props.activeDcmIndex]
-  }
+    return this.dicomViewersRefs[this.props.activeDcmIndex];
+  };
 
   showFileOpen() {
-    this.props.isOpenStore(false)
-    this.fileOpen.current.click()
+    this.props.isOpenStore(false);
+    this.fileOpen.current.click();
   }
 
   handleOpenLocalFs = (filesSelected) => {
-
     if (filesSelected.length > 1) {
-      this.files = filesSelected
-      this.changeLayout(1, 1)
-      this.mprPlane = ''
-      this.volume = []
-      this.setState({
-        sliceIndex: 0,
-        sliceMax: 1,
-        visibleMprOrthogonal: false,
-        visibleMprCoronal: false,
-        visibleMprSagittal: false,
-        visibleMprAxial: false
-      }, () => {
-        this.setState({ visibleOpenMultipleFilesDlg: true })
-      })
+      this.files = filesSelected;
+      this.changeLayout(1, 1);
+      this.mprPlane = "";
+      this.volume = [];
+      this.setState(
+        {
+          sliceIndex: 0,
+          sliceMax: 1,
+          visibleMprOrthogonal: false,
+          visibleMprCoronal: false,
+          visibleMprSagittal: false,
+          visibleMprAxial: false,
+        },
+        () => {
+          this.setState({ visibleOpenMultipleFilesDlg: true });
+        }
+      );
     } else {
-      const file = filesSelected[0]
-      if (file.type === 'application/x-zip-compressed' || file.type === 'application/zip') {
-        this.file = file
-        this.url = null
-        this.setState({ visibleZippedFileDlg: true })
+      const file = filesSelected[0];
+      if (
+        file.type === "application/x-zip-compressed" ||
+        file.type === "application/zip"
+      ) {
+        this.file = file;
+        this.url = null;
+        this.setState({ visibleZippedFileDlg: true });
       } else {
-        this.setState({ sliceIndex: 0, sliceMax: 1 })
-        this.props.setLocalFileStore(file)
-        this.dicomViewersRefs[this.props.activeDcmIndex].runTool('clear')
-        this.dicomViewersRefs[this.props.activeDcmIndex].runTool('openLocalFs', file)
+        this.setState({ sliceIndex: 0, sliceMax: 1 });
+        this.props.setLocalFileStore(file);
+        this.dicomViewersRefs[this.props.activeDcmIndex].runTool("clear");
+        this.dicomViewersRefs[this.props.activeDcmIndex].runTool(
+          "openLocalFs",
+          file
+        );
       }
     }
-  }
+  };
 
   handleOpenSandboxFs = (fsItem) => {
-    this.dicomViewersRefs[this.props.activeDcmIndex].runTool('clear')
-    this.dicomViewersRefs[this.props.activeDcmIndex].runTool('openSandboxFs', fsItem)
-  }
+    this.dicomViewersRefs[this.props.activeDcmIndex].runTool("clear");
+    this.dicomViewersRefs[this.props.activeDcmIndex].runTool(
+      "openSandboxFs",
+      fsItem
+    );
+  };
 
   handleOpenImage = (index) => {
-    //console.log('handleOpenImage: ', index)
-    //    console.log('handleOpenImage - this.dicomViewersRefs: ', this.dicomViewersRefs)
+    this.dicomViewersRefs[this.props.activeDcmIndex].sliceIndex = index; // this.state.sliceIndex
 
-    this.dicomViewersRefs[this.props.activeDcmIndex].sliceIndex = index // this.state.sliceIndex
-
-    const visibleMprOrthogonal = this.state.visibleMprOrthogonal
-    const visibleMprSagittal = this.state.visibleMprSagittal
-    const visibleMprCoronal = this.state.visibleMprCoronal
-    const visibleMprAxial = this.state.visibleMprAxial
-    const plane = this.mprPlanePosition() // plane of source
-    //console.log('handleOpenImage, plane: ', plane)
-    //console.log('handleOpenImage, visibleMprOrthogonal: ', visibleMprOrthogonal)
+    const visibleMprOrthogonal = this.state.visibleMprOrthogonal;
+    const visibleMprSagittal = this.state.visibleMprSagittal;
+    const visibleMprCoronal = this.state.visibleMprCoronal;
+    const visibleMprAxial = this.state.visibleMprAxial;
+    const plane = this.mprPlanePosition();
 
     if (visibleMprOrthogonal) {
       if (this.props.activeDcmIndex === 0) {
-        this.dicomViewersRefs[0].runTool('openimage', index)
+        this.dicomViewersRefs[0].runTool("openimage", index);
         if (this.state.mprMode) {
-          this.dicomViewersRefs[1].mprReferenceLines(index)
-          this.dicomViewersRefs[2].mprReferenceLines(index)
+          this.dicomViewersRefs[1].mprReferenceLines(index);
+          this.dicomViewersRefs[2].mprReferenceLines(index);
         }
       } else if (this.props.activeDcmIndex === 1) {
-        // disabled b4
-        // if (plane === 'sagittal') { // then open axial plane in second view
-        //   this.dicomViewersRefs[1].mprRenderXZPlane(this.dicomViewersRefs[0].filename, plane, index, this.mprData)
-        // } else if (plane === 'axial') { // then open coronal plane in second view
-        //   this.dicomViewersRefs[1].mprRenderXZPlane(this.dicomViewersRefs[0].filename, plane, index, this.mprData)
-        // } else { // plane is coronal, then open axial in second view
-        //   this.dicomViewersRefs[1].mprRenderXZPlane(this.dicomViewersRefs[0].filename, plane, index, this.mprData)
-        // } // disabled b4
-      //   this.dicomViewersRefs[1].mprRenderXZPlane(this.dicomViewersRefs[0].filename, plane, index, this.mprData)
-      //   this.dicomViewersRefs[2].mprReferenceLines2(index)
-      //   this.dicomViewersRefs[0].mprReferenceLines3(index, this.mprData)
-
-      // } // disabled b4 
-      // else if (this.props.activeDcmIndex === 2) {
-      //   if (plane === 'sagittal') { // then open axial plane in third view
-      //     this.dicomViewersRefs[2].mprRenderYZPlane(this.dicomViewersRefs[0].filename, plane, index, this.mprData)
-      //   } else if (plane === 'axial') { // then open coronal plane in third view
-      //     this.dicomViewersRefs[2].mprRenderYZPlane(this.dicomViewersRefs[0].filename, plane, index, this.mprData)
-      //   } else { // plane is coronal, then open axial in third view
-      //     this.dicomViewersRefs[2].mprRenderYZPlane(this.dicomViewersRefs[0].filename, plane, index, this.mprData)
-      //   } // disabled b4
-        this.dicomViewersRefs[2].mprRenderYZPlane(this.dicomViewersRefs[0].filename, plane, index, this.mprData)
-        this.dicomViewersRefs[1].mprReferenceLines2(index)
-        this.dicomViewersRefs[0].mprReferenceLines3(index, this.mprData)
+        this.dicomViewersRefs[2].mprRenderYZPlane(
+          this.dicomViewersRefs[0].filename,
+          plane,
+          index,
+          this.mprData
+        );
+        this.dicomViewersRefs[1].mprReferenceLines2(index);
+        this.dicomViewersRefs[0].mprReferenceLines3(index, this.mprData);
       }
-
     } else {
-      if (objectIsEmpty(this.mprData)) { // works on new image
-        this.dicomViewersRefs[this.props.activeDcmIndex].runTool('openimage', index)
-      } else if ((plane === 'sagittal' && visibleMprSagittal) ||
-        (plane === 'axial' && visibleMprAxial) ||
-        (plane === 'coronal' && visibleMprCoronal))
-        this.dicomViewersRefs[this.props.activeDcmIndex].runTool('openimage', index)
-      else if (plane === 'sagittal' && visibleMprAxial)
-        this.dicomViewersRefs[this.props.activeDcmIndex].mprRenderXZPlane(this.dicomViewersRefs[0].filename, plane, index, this.mprData)
-      else if (plane === 'sagittal' && visibleMprCoronal)
-        this.dicomViewersRefs[this.props.activeDcmIndex].mprRenderYZPlane(this.dicomViewersRefs[0].filename, plane, index, this.mprData)
-      else if (plane === 'axial' && visibleMprSagittal)
-        this.dicomViewersRefs[this.props.activeDcmIndex].mprRenderYZPlane(this.dicomViewersRefs[0].filename, plane, index, this.mprData)
-      else if (plane === 'axial' && visibleMprCoronal)
-        this.dicomViewersRefs[this.props.activeDcmIndex].mprRenderXZPlane(this.dicomViewersRefs[0].filename, plane, index, this.mprData)
-      else if (plane === 'coronal' && visibleMprSagittal)
-        this.dicomViewersRefs[this.props.activeDcmIndex].mprRenderYZPlane(this.dicomViewersRefs[0].filename, plane, index, this.mprData)
-      else if (plane === 'coronal' && visibleMprAxial)
-        this.dicomViewersRefs[this.props.activeDcmIndex].mprRenderXZPlane(this.dicomViewersRefs[0].filename, plane, index, this.mprData)
-      else { // it's not a possible MPR, then open as normal dicom file
-        this.dicomViewersRefs[this.props.activeDcmIndex].runTool('openimage', index)
+      if (objectIsEmpty(this.mprData)) {
+        // works on new image
+        this.dicomViewersRefs[this.props.activeDcmIndex].runTool(
+          "openimage",
+          index
+        );
+      } else if (
+        (plane === "sagittal" && visibleMprSagittal) ||
+        (plane === "axial" && visibleMprAxial) ||
+        (plane === "coronal" && visibleMprCoronal)
+      )
+        this.dicomViewersRefs[this.props.activeDcmIndex].runTool(
+          "openimage",
+          index
+        );
+      else if (plane === "sagittal" && visibleMprAxial)
+        this.dicomViewersRefs[this.props.activeDcmIndex].mprRenderXZPlane(
+          this.dicomViewersRefs[0].filename,
+          plane,
+          index,
+          this.mprData
+        );
+      else if (plane === "sagittal" && visibleMprCoronal)
+        this.dicomViewersRefs[this.props.activeDcmIndex].mprRenderYZPlane(
+          this.dicomViewersRefs[0].filename,
+          plane,
+          index,
+          this.mprData
+        );
+      else if (plane === "axial" && visibleMprSagittal)
+        this.dicomViewersRefs[this.props.activeDcmIndex].mprRenderYZPlane(
+          this.dicomViewersRefs[0].filename,
+          plane,
+          index,
+          this.mprData
+        );
+      else if (plane === "axial" && visibleMprCoronal)
+        this.dicomViewersRefs[this.props.activeDcmIndex].mprRenderXZPlane(
+          this.dicomViewersRefs[0].filename,
+          plane,
+          index,
+          this.mprData
+        );
+      else if (plane === "coronal" && visibleMprSagittal)
+        this.dicomViewersRefs[this.props.activeDcmIndex].mprRenderYZPlane(
+          this.dicomViewersRefs[0].filename,
+          plane,
+          index,
+          this.mprData
+        );
+      else if (plane === "coronal" && visibleMprAxial)
+        this.dicomViewersRefs[this.props.activeDcmIndex].mprRenderXZPlane(
+          this.dicomViewersRefs[0].filename,
+          plane,
+          index,
+          this.mprData
+        );
+      else {
+        // it's not a possible MPR, then open as normal dicom file
+        this.dicomViewersRefs[this.props.activeDcmIndex].runTool(
+          "openimage",
+          index
+        );
       }
     }
 
-    this.activeDcmViewersNum = this.getActiveDcmViewers()
+    this.activeDcmViewersNum = this.getActiveDcmViewers();
     //console.log('handleOpenImage - this.dicomViewersActive 1: ', this.dicomViewersActive)
     if (this.activeDcmViewersNum > 0) {
-      this.getActiveDcmViewersSameStudy()
-      this.getActiveDcmViewersSamePlane()
+      this.getActiveDcmViewersSameStudy();
+      this.getActiveDcmViewersSamePlane();
       //console.log('handleOpenImage - this.dicomViewersActive 2: ', this.dicomViewersActive)
-      if (this.state.visibleReferenceLines && this.dicomViewersActive.length > 1) {
-        this.referenceLinesShow()
+      if (
+        this.state.visibleReferenceLines &&
+        this.dicomViewersActive.length > 1
+      ) {
+        this.referenceLinesShow();
       }
     }
-  }
+  };
 
   handleOpenFileDicomdir = (file) => {
-    this.dicomViewersRefs[this.props.activeDcmIndex].runTool('clear')
-    this.dicomViewersRefs[this.props.activeDcmIndex].runTool('openLocalFs', file)
-  }
+    this.dicomViewersRefs[this.props.activeDcmIndex].runTool("clear");
+    this.dicomViewersRefs[this.props.activeDcmIndex].runTool(
+      "openLocalFs",
+      file
+    );
+  };
 
   showOpenFolder() {
-    this.openFolder.current.click()
+    this.openFolder.current.click();
   }
 
   showOpenDicomdir() {
-    this.openDicomdir.current.click()
+    this.openDicomdir.current.click();
   }
 
   handleOpenFolder = (files) => {
     if (this.state.visibleExplorer) {
       this.setState({ visibleExplorer: false }, () => {
-        this.handleOpenFolderDo(files)
-      })
-    } else this.handleOpenFolderDo(files)
-
-  }
+        this.handleOpenFolderDo(files);
+      });
+    } else this.handleOpenFolderDo(files);
+  };
 
   handleOpenFolderDo = (files) => {
-    this.changeLayout(1, 1)
-    this.mprPlane = ''
-    this.volume = []
-    this.files = []
-    this.clear()
+    this.changeLayout(1, 1);
+    this.mprPlane = "";
+    this.volume = [];
+    this.files = [];
+    this.clear();
 
-    this.folder = files[0].webkitRelativePath.split('/')[0]
+    this.folder = files[0].webkitRelativePath.split("/")[0];
 
     for (let i = 0; i < files.length; i++) {
-      this.files.push(files[i])
+      this.files.push(files[i]);
     }
 
     this.setState({
@@ -540,219 +576,227 @@ class App extends PureComponent {
       visibleMprOrthogonal: false,
       visibleMprCoronal: false,
       visibleMprSagittal: false,
-      visibleMprAxial: false
-    })
-    this.setState({ visibleOpenMultipleFilesDlg: true })
-  }
-
+      visibleMprAxial: false,
+    });
+    this.setState({ visibleOpenMultipleFilesDlg: true });
+  };
 
   handleOpenDicomdir = (files) => {
     this.setState({ visibleDicomdir: false }, () => {
-      let dicomdir = null
-      let datafiles = []
+      let dicomdir = null;
+      let datafiles = [];
       for (let i = 0; i < files.length; i++) {
-        if (files[i].webkitRelativePath.includes('DICOMDIR')) {
-          dicomdir = files[i]
+        if (files[i].webkitRelativePath.includes("DICOMDIR")) {
+          dicomdir = files[i];
         } else {
-          datafiles.push(files[i])
+          datafiles.push(files[i]);
         }
       }
       if (dicomdir !== null) {
-        this.props.setDicomdirStore({ origin: 'local', dicomdir: dicomdir, files: datafiles })
-        this.toggleDicomdir()
+        this.props.setDicomdirStore({
+          origin: "local",
+          dicomdir: dicomdir,
+          files: datafiles,
+        });
+        this.toggleDicomdir();
       } else {
-        this.setState({ titleMessage: 'Warning', textMessage: 'The selected folder does not contains any DICOMDIR file.' }, () => {
-          this.setState({ visibleMessage: true })
-        })
+        this.setState(
+          {
+            titleMessage: "Warning",
+            textMessage:
+              "The selected folder does not contains any DICOMDIR file.",
+          },
+          () => {
+            this.setState({ visibleMessage: true });
+          }
+        );
       }
-    })
-  }
+    });
+  };
 
   handleOpenFsDicomdir = (fsItem) => {
-    this.props.setDicomdirStore({ origin: 'fs', dicomdir: fsItem, files: [] })
-    this.toggleDicomdir()
-  }
+    this.props.setDicomdirStore({ origin: "fs", dicomdir: fsItem, files: [] });
+    this.toggleDicomdir();
+  };
 
   componentDidMount() {
     // Need to set the renderNode since the drawer uses an overlay
     //this.dialog = document.getElementById('drawer-routing-example-dialog')
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
   }
-
 
   showAppBar = () => {
-    window.scrollTo(0, 0)
-  }
-
+    window.scrollTo(0, 0);
+  };
 
   toggleMainMenu = () => {
-    const visibleMainMenu = this.state.visibleMainMenu
-    if (getSettingsFsView() === 'left') {
-      this.setState({ visibleMainMenu: !visibleMainMenu, visibleFileManager: false })
+    const visibleMainMenu = this.state.visibleMainMenu;
+    if (getSettingsFsView() === "left") {
+      this.setState({
+        visibleMainMenu: !visibleMainMenu,
+        visibleFileManager: false,
+      });
     } else {
-      this.setState({ visibleMainMenu: !visibleMainMenu })
+      this.setState({ visibleMainMenu: !visibleMainMenu });
     }
-  }
+  };
 
   showMainMenu = () => {
-    this.setState({ visibleMainMenu: true })
-  }
+    this.setState({ visibleMainMenu: true });
+  };
 
   hideMainMenu = () => {
-    this.setState({ visibleMainMenu: false })
-  }
+    this.setState({ visibleMainMenu: false });
+  };
 
   handleVisibility = (visibleMainMenu) => {
-    this.setState({ visibleMainMenu })
-  }
-
+    this.setState({ visibleMainMenu });
+  };
 
   toggleFileManager = () => {
-    if (getSettingsFsView() === 'left') {
-      this.setState({ visibleMainMenu: false, visibleFileManager: !this.state.visibleFileManager })
+    if (getSettingsFsView() === "left") {
+      this.setState({
+        visibleMainMenu: false,
+        visibleFileManager: !this.state.visibleFileManager,
+      });
     } else {
-      const visible = !this.state.visibleFileManager
-      this.setState({ visibleFileManager: visible })
+      const visible = !this.state.visibleFileManager;
+      this.setState({ visibleFileManager: visible });
       if (visible)
         this.setState({
           visibleMeasure: false,
           visibleHeader: false,
           visibleToolbox: false,
           visibleDicomdir: false,
-          visibleExplorer: false
-        })
+          visibleExplorer: false,
+        });
     }
-  }
+  };
 
   toggleExplorer = () => {
-    const visible = !this.state.visibleExplorer
-    this.setState({ visibleExplorer: visible })
+    const visible = !this.state.visibleExplorer;
+    this.setState({ visibleExplorer: visible });
     if (visible)
       this.setState({
         visibleMeasure: false,
         visibleHeader: false,
         visibleToolbox: false,
         visibleDicomdir: false,
-        visibleFileManager: false
-      })
-  }
+        visibleFileManager: false,
+      });
+  };
 
   toggleHeader = () => {
-    const visible = !this.state.visibleHeader
-    this.setState({ visibleHeader: visible })
+    const visible = !this.state.visibleHeader;
+    this.setState({ visibleHeader: visible });
     if (visible)
       this.setState({
         visibleMeasure: false,
         visibleToolbox: false,
         visibleDicomdir: false,
         visibleFileManager: false,
-        visibleExplorer: false
-      })
-  }
-
+        visibleExplorer: false,
+      });
+  };
 
   toggleToolbox = () => {
-    const visible = !this.state.visibleToolbox
-    this.setState({ visibleToolbox: visible })
+    const visible = !this.state.visibleToolbox;
+    this.setState({ visibleToolbox: visible });
     if (visible)
       this.setState({
         visibleMeasure: false,
         visibleHeader: false,
         visibleDicomdir: false,
         visibleFileManager: false,
-        visibleExplorer: false
-      })
-  }
+        visibleExplorer: false,
+      });
+  };
 
   saveMeasure = () => {
-    this.dicomViewersRefs[this.props.activeDcmIndex].runTool('savetools')
-  }
+    this.dicomViewersRefs[this.props.activeDcmIndex].runTool("savetools");
+  };
 
   toggleMeasure = () => {
-    const visible = !this.state.visibleMeasure
-    this.setState({ visibleMeasure: visible })
+    const visible = !this.state.visibleMeasure;
+    this.setState({ visibleMeasure: visible });
     if (visible)
       this.setState({
         visibleToolbox: false,
         visibleHeader: false,
         visibleDicomdir: false,
         visibleFileManager: false,
-        visibleExplorer: false
-      })
-  }
+        visibleExplorer: false,
+      });
+  };
 
   hideMeasure = () => {
-    this.setState({ visibleMeasure: false })
-  }
+    this.setState({ visibleMeasure: false });
+  };
 
   handleVisibilityMeasure = (visibleMeasure) => {
-    this.setState({ visibleMeasure })
-  }
-
+    this.setState({ visibleMeasure });
+  };
 
   toggleDicomdir = () => {
-    const visible = !this.state.visibleDicomdir
-    this.setState({ visibleDicomdir: visible })
+    const visible = !this.state.visibleDicomdir;
+    this.setState({ visibleDicomdir: visible });
     if (visible)
       this.setState({
         visibleMeasure: false,
         visibleToolbox: false,
         visibleHeader: false,
-        visibleFileManager: false
-      })
-  }
-
+        visibleFileManager: false,
+      });
+  };
 
   clearMeasure = () => {
-    this.showClearMeasureDlg()
-  }
+    this.showClearMeasureDlg();
+  };
 
   showClearMeasureDlg = () => {
-    this.setState({ visibleClearMeasureDlg: true })
-  }
+    this.setState({ visibleClearMeasureDlg: true });
+  };
 
   hideClearMeasureDlg = () => {
-    this.setState({ visibleClearMeasureDlg: false })
-  }
+    this.setState({ visibleClearMeasureDlg: false });
+  };
 
   confirmClearMeasureDlg = () => {
-    this.hideClearMeasureDlg()
-    this.dicomViewersRefs[this.props.activeDcmIndex].runTool('removetools')
-  }
-
+    this.hideClearMeasureDlg();
+    this.dicomViewersRefs[this.props.activeDcmIndex].runTool("removetools");
+  };
 
   showZippedFileDlg = () => {
-    this.setState({ visibleZippedFileDlg: true })
-  }
+    this.setState({ visibleZippedFileDlg: true });
+  };
 
   hideZippedFileDlg = () => {
-    this.setState({ visibleZippedFileDlg: false })
-  }
+    this.setState({ visibleZippedFileDlg: false });
+  };
 
   confirmZippedFileDlg = () => {
-    this.hideZippedFileDlg()
+    this.hideZippedFileDlg();
     this.setState({ visibleFileManager: true }, () => {
       if (this.url !== null) {
-        this.setState({ visibleDownloadZipDlg: true })
+        this.setState({ visibleDownloadZipDlg: true });
       } else {
-        this.props.setFsZippedFile(this.file)
+        this.props.setFsZippedFile(this.file);
       }
-    })
-  }
-
+    });
+  };
 
   showAbout = () => {
-    this.setState({ visibleAbout: !this.state.visibleAbout })
-  }
+    this.setState({ visibleAbout: !this.state.visibleAbout });
+  };
 
   showSettings = () => {
     this.setState({
       visibleMainMenu: false,
       visibleSettings: true,
       visibleToolbar: false,
-      position: 'right'
-    })
-  }
+      position: "right",
+    });
+  };
 
   hideSettings = () => {
     this.setState({
@@ -761,119 +805,124 @@ class App extends PureComponent {
       visibleToolbar: true,
       visibleFileManager: false,
       visibleDicomdir: false,
-    })
-  }
+    });
+  };
 
   handleVisibilitySettings = (visibleSettings) => {
-    this.setState({ visibleSettings })
-  }
+    this.setState({ visibleSettings });
+  };
 
   hideDownloadZipDlg = () => {
-    this.setState({ visibleDownloadZipDlg: false })
-  }
+    this.setState({ visibleDownloadZipDlg: false });
+  };
 
   hideOpenMultipleFilesDlg = () => {
-    this.setState({ visibleOpenMultipleFilesDlg: false })
-    this.openMultipleFilesCompleted()
-  }
+    this.setState({ visibleOpenMultipleFilesDlg: false });
+    this.openMultipleFilesCompleted();
+  };
 
   openMultipleFilesCompleted = () => {
     if (this.props.files !== null) {
-      this.changeLayout(1, 1)
+      this.changeLayout(1, 1);
 
-      this.dicomViewersRefs[this.props.activeDcmIndex].runTool('openimage', 0)
+      this.dicomViewersRefs[this.props.activeDcmIndex].runTool("openimage", 0);
 
-      const sliceMax = this.props.files.length
+      const sliceMax = this.props.files.length;
 
-      this.setState({ sliceMax: sliceMax }, () => {
-
-      })
+      this.setState({ sliceMax: sliceMax }, () => {});
 
       // check if there are studies and series, if so then prepare Explorer
 
-      const patientList = groupBy(this.props.files, a => a.patient.patientName)
-      const patientKeys = [...patientList.keys()]
+      const patientList = groupBy(
+        this.props.files,
+        (a) => a.patient.patientName
+      );
+      const patientKeys = [...patientList.keys()];
       const patient = {
         list: patientList,
-        keys: patientKeys
-      }
+        keys: patientKeys,
+      };
 
       this.explorer = {
         folder: this.folder,
         patient: patient,
-      }
+      };
 
       if (sliceMax > 1)
-        this.setState({ visibleExplorer: true, visibleFileManager: false })
+        this.setState({ visibleExplorer: true, visibleFileManager: false });
     }
-  }
+  };
 
   showOpenUrl = () => {
-    this.setState({ visibleOpenUrl: true })
-  }
+    this.setState({ visibleOpenUrl: true });
+  };
 
   hideOpenUrl = (openDlg) => {
-    this.setState({ visibleOpenUrl: false },
-      () => {
-        if (openDlg) {
-          this.hideMainMenu()
-          this.file = null
-          this.url = this.openUrlField.value
-          if (getFileExtReal(this.url) === 'zip') {
-            this.setState({ visibleZippedFileDlg: true })
-          } else {
-            return this.dicomViewersRefs[this.props.activeDcmIndex].runTool('openurl', this.openUrlField.value)
-          }
+    this.setState({ visibleOpenUrl: false }, () => {
+      if (openDlg) {
+        this.hideMainMenu();
+        this.file = null;
+        this.url = this.openUrlField.value;
+        if (getFileExtReal(this.url) === "zip") {
+          this.setState({ visibleZippedFileDlg: true });
+        } else {
+          return this.dicomViewersRefs[this.props.activeDcmIndex].runTool(
+            "openurl",
+            this.openUrlField.value
+          );
         }
-      })
-  }
+      }
+    });
+  };
 
   downloadOpenUrl = () => {
-    this.setState({ visibleOpenUrl: false, visibleToolbar: true })
-  }
+    this.setState({ visibleOpenUrl: false, visibleToolbar: true });
+  };
 
   resetImage = () => {
-    this.dicomViewersRefs[this.props.activeDcmIndex].runTool('reset')
-  }
+    this.dicomViewersRefs[this.props.activeDcmIndex].runTool("reset");
+  };
 
   saveShot = () => {
-    this.dicomViewersRefs[this.props.activeDcmIndex].runTool('saveas')
-  }
+    this.dicomViewersRefs[this.props.activeDcmIndex].runTool("saveas");
+  };
 
   cinePlayer = () => {
-    this.dicomViewersRefs[this.props.activeDcmIndex].runTool('cine')
-  }
+    this.dicomViewersRefs[this.props.activeDcmIndex].runTool("cine");
+  };
 
   clear = () => {
-    this.layoutGridClick(0)
+    this.layoutGridClick(0);
     for (let i = 0; i < this.props.isOpen.length; i++)
-      if (this.props.isOpen[i]) this.dicomViewersRefs[i].runTool('clear')
+      if (this.props.isOpen[i]) this.dicomViewersRefs[i].runTool("clear");
     setTimeout(() => {
-      this.setState({
-        openImageEdit: false,
-        openTools: false,
-        mprMenu: false,
-        visibleToolbox: false,
-        visibleMeasure: false,
-        visibleHeader: false,
-        visibleDicomdir: false
-      }, () => {
-      })
-      this.changeLayout(1, 1)
-      this.props.setFilesStore(null)
-      this.props.setDicomdirStore(null)
-      //this.props.clearingStore()      
-    }, 100)
-  }
+      this.setState(
+        {
+          openImageEdit: false,
+          openTools: false,
+          mprMenu: false,
+          visibleToolbox: false,
+          visibleMeasure: false,
+          visibleHeader: false,
+          visibleDicomdir: false,
+        },
+        () => {}
+      );
+      this.changeLayout(1, 1);
+      this.props.setFilesStore(null);
+      this.props.setDicomdirStore(null);
+      //this.props.clearingStore()
+    }, 100);
+  };
 
   //#region Layout handler
   handleLayout = (event) => {
-    this.setState({ anchorElLayout: event.currentTarget })
-  }
+    this.setState({ anchorElLayout: event.currentTarget });
+  };
 
   closeLayout = () => {
-    this.setState({ anchorElLayout: null })
-  }
+    this.setState({ anchorElLayout: null });
+  };
 
   changeLayout = (row, col) => {
     //console.log(`changeLayout, row: ${row} - col: ${col}`)
@@ -881,121 +930,131 @@ class App extends PureComponent {
     if (row < this.props.layout[0] || col < this.props.layout[1]) {
       for (let i = 0; i < 4; i++) {
         for (let j = 0; j < 4; j++) {
-          if ((i + 1 > row) || (j + 1 > col)) {
-            const index = i * 4 + j
-            this.dicomViewersRefs[index] = undefined
-            if (index === this.props.activeDcmIndex) this.layoutGridClick(index - 1)
+          if (i + 1 > row || j + 1 > col) {
+            const index = i * 4 + j;
+            this.dicomViewersRefs[index] = undefined;
+            if (index === this.props.activeDcmIndex)
+              this.layoutGridClick(index - 1);
           }
         }
       }
-      this.activeDcmViewersNum = this.getActiveDcmViewers()
-      if (this.isMultipleFiles && this.activeDcmViewersNum === 1) this.setState({ mprMenu: true })
+      this.activeDcmViewersNum = this.getActiveDcmViewers();
+      if (this.isMultipleFiles && this.activeDcmViewersNum === 1)
+        this.setState({ mprMenu: true });
     }
-    this.props.setLayoutStore(row, col)
-  }
+    this.props.setLayoutStore(row, col);
+  };
 
-  //#endregion 
+  //#endregion
 
   //#region Tools panel handler
   handleToolsPanel = (event) => {
-    this.setState({ anchorElToolsPanel: event.currentTarget })
-  }
+    this.setState({ anchorElToolsPanel: event.currentTarget });
+  };
 
   closeToolsPanel = () => {
-    this.setState({ anchorElToolsPanel: null })
-  }
+    this.setState({ anchorElToolsPanel: null });
+  };
   //#endregion
 
   toolExecute = (tool) => {
-    this.closeToolsPanel()
-    if (tool === 'referencelines') {
-      this.referenceLinesToggle()
-    } else if (tool === 'serieslink') {
-      this.seriesLinkToggle()
+    this.closeToolsPanel();
+    if (tool === "referencelines") {
+      this.referenceLinesToggle();
+    } else if (tool === "serieslink") {
+      this.seriesLinkToggle();
     } else {
-      this.setState({ toolActive: tool })
-      this.props.toolStore(tool)
-      this.dicomViewersRefs[this.props.activeDcmIndex].runTool(tool)
+      this.setState({ toolActive: tool });
+      this.props.toolStore(tool);
+      this.dicomViewersRefs[this.props.activeDcmIndex].runTool(tool);
     }
-  }
+  };
 
   toolChange = () => {
-    const toolState = 1 - this.state.toolState
+    const toolState = 1 - this.state.toolState;
     this.setState({ toolState: toolState }, () => {
-      this.changeTool.changeTool(this.props.tool, toolState)
-    })
-  }
+      this.changeTool.changeTool(this.props.tool, toolState);
+    });
+  };
 
   toolRemove = (index) => {
-    this.dicomViewersRefs[this.props.activeDcmIndex].runTool('removetool', index)
-  }
+    this.dicomViewersRefs[this.props.activeDcmIndex].runTool(
+      "removetool",
+      index
+    );
+  };
 
   // toggleOpenMenu = () => {
   //   this.setState({ openMenu: !this.state.openMenu })
   // }
 
   toggleImageEdit = () => {
-    this.setState({ openImageEdit: !this.state.openImageEdit })
-  }
+    this.setState({ openImageEdit: !this.state.openImageEdit });
+  };
 
   toggleTools = () => {
-    this.setState({ openTools: !this.state.openTools })
-  }
+    this.setState({ openTools: !this.state.openTools });
+  };
 
   toggleMpr = () => {
-    this.setState({ mprMenu: !this.state.mprMenu })
-  }
+    this.setState({ mprMenu: !this.state.mprMenu });
+  };
 
   layoutGridClick = (index) => {
-    if (isMobile && index === this.props.activeDcmIndex) return
+    if (isMobile && index === this.props.activeDcmIndex) return;
 
     //console.log('layoutGridClick: ', index)
 
-  //  this.mprPlanePosition(true, index) // disabled b4
+    //  this.mprPlanePosition(true, index) // disabled b4
 
-    const sliceMax = this.dicomViewersRefs[index].sliceMax
-    const sliceIndex = this.dicomViewersRefs[index].sliceIndex
-    this.setState({ sliceMax: sliceMax, sliceIndex: sliceIndex })
+    const sliceMax = this.dicomViewersRefs[index].sliceMax;
+    const sliceIndex = this.dicomViewersRefs[index].sliceIndex;
+    this.setState({ sliceMax: sliceMax, sliceIndex: sliceIndex });
 
-    this.props.setActiveDcmIndex(index)
+    this.props.setActiveDcmIndex(index);
 
     if (this.state.visibleMprOrthogonal) {
-      this.setState({ sliceMax: sliceMax, sliceIndex: sliceIndex })
+      this.setState({ sliceMax: sliceMax, sliceIndex: sliceIndex });
     }
 
-    const dcmViewer = this.getDcmViewerRef(index)
+    const dcmViewer = this.getDcmViewerRef(index);
     //console.log('layoutGridClick - dcmViewer: ', dcmViewer)
-    if (dcmViewer.image === null) return // click on empty frame
+    if (dcmViewer.image === null) return; // click on empty frame
 
-    this.props.setActiveMeasurements(dcmViewer.measurements)
-    this.props.setActiveDcm(dcmViewer) // {image: dcmViewer.image, element: dcmViewer.dicomImage, isDicom: dcmViewer.isDicom}
-    this.props.setExplorerActiveSeriesIndex(dcmViewer.explorerIndex)
-    //console.log('layoutGridClick - dcmViewer.explorerIndex: ', dcmViewer.explorerIndex) 
+    this.props.setActiveMeasurements(dcmViewer.measurements);
+    this.props.setActiveDcm(dcmViewer); // {image: dcmViewer.image, element: dcmViewer.dicomImage, isDicom: dcmViewer.isDicom}
+    this.props.setExplorerActiveSeriesIndex(dcmViewer.explorerIndex);
+    //console.log('layoutGridClick - dcmViewer.explorerIndex: ', dcmViewer.explorerIndex)
 
-    if (this.state.visibleReferenceLines && this.dicomViewersActive.length > 1) {
-      if (this.referenceLines.scoutViewer !== undefined) this.referenceLines.scoutViewer.updateImage()
+    if (
+      this.state.visibleReferenceLines &&
+      this.dicomViewersActive.length > 1
+    ) {
+      if (this.referenceLines.scoutViewer !== undefined)
+        this.referenceLines.scoutViewer.updateImage();
       this.setState({ visibleReferenceLines: false }, () => {
-        this.referenceLinesToggle()
-      })
+        this.referenceLinesToggle();
+      });
     }
-  }
+  };
 
   layoutGridTouch = (index) => {
-    if (!isMobile && index === this.props.activeDcmIndex) return
-
-  }
+    if (!isMobile && index === this.props.activeDcmIndex) return;
+  };
 
   buildLayoutGrid = () => {
-
     //this.referenceLinesHide()
 
-    let dicomviewers = []
+    let dicomviewers = [];
     for (let i = 0; i < this.props.layout[0]; i++) {
       for (let j = 0; j < this.props.layout[1]; j++) {
         const styleLayoutGrid = {
-          border: this.props.layout[0] === 1 && this.props.layout[1] === 1 ? 'solid 1px #000000' : 'solid 1px #444444',
-        }
-        const index = i * 4 + j
+          border:
+            this.props.layout[0] === 1 && this.props.layout[1] === 1
+              ? "solid 1px #000000"
+              : "solid 1px #444444",
+        };
+        const index = i * 4 + j;
         dicomviewers.push(
           <div
             key={index}
@@ -1005,7 +1064,7 @@ class App extends PureComponent {
           >
             {this.getDcmViewer(index)}
           </div>
-        )
+        );
       }
     }
 
@@ -1013,75 +1072,78 @@ class App extends PureComponent {
       <div
         id="dicomviewer-grid"
         style={{
-          display: 'grid',
-          gridTemplateRows: `repeat(${this.props.layout[0]}, ${100 / this.props.layout[0]}%)`,
-          gridTemplateColumns: `repeat(${this.props.layout[1]}, ${100 / this.props.layout[1]}%)`,
-          height: '100%',
-          width: '100%',
+          display: "grid",
+          gridTemplateRows: `repeat(${this.props.layout[0]}, ${
+            100 / this.props.layout[0]
+          }%)`,
+          gridTemplateColumns: `repeat(${this.props.layout[1]}, ${
+            100 / this.props.layout[1]
+          }%)`,
+          height: "100%",
+          width: "100%",
         }}
       >
         {dicomviewers}
       </div>
-    )
-  }
+    );
+  };
 
   getStringVisiblePlane = () => {
-    if (this.state.visibleMprOrthogonal)
-      return 'orthogonal'
-    else if (this.state.visibleMprSagittal)
-      return 'sagittal'
-    else if (this.state.visibleMprAxial)
-      return 'axial'
-    else if (this.state.visibleMprCoronal)
-      return 'coronal'
-  }
+    if (this.state.visibleMprOrthogonal) return "orthogonal";
+    else if (this.state.visibleMprSagittal) return "sagittal";
+    else if (this.state.visibleMprAxial) return "axial";
+    else if (this.state.visibleMprCoronal) return "coronal";
+  };
 
   appBarTitle = (classes, isOpen, dcmViewer) => {
     if (isMobile && !isTablet) {
-      if (isOpen)
-        return null
+      if (isOpen) return null;
       else
         return (
-          <Typography variant="overline" >
+          <Typography variant="overline">
             <strong>MIDL</strong> <strong>D</strong>icom <strong>V</strong>iewer
           </Typography>
-        )
+        );
     } else {
       if (isOpen) {
-        const plane = this.getStringVisiblePlane()
-        if (this.state.sliceMax > 1 && this.mprPlane !== plane && this.mprPlane !== '') {
+        const plane = this.getStringVisiblePlane();
+        if (
+          this.state.sliceMax > 1 &&
+          this.mprPlane !== plane &&
+          this.mprPlane !== ""
+        ) {
           return (
             <Typography variant="overline" className={classes.title}>
-              {'MPR ' + plane}
+              {"MPR " + plane}
             </Typography>
-          )
+          );
         }
         return (
           <Typography variant="overline" className={classes.title}>
             {dcmViewer.filename}
           </Typography>
-        )
+        );
       } else if (this.props.dicomdir !== null) {
         return (
           <Typography variant="overline" className={classes.title}>
             {this.props.dicomdir.dicomdir.webkitRelativePath}
           </Typography>
-        )
+        );
       } else
         return (
           <Typography variant="overline" className={classes.title}>
             <strong>MIDL</strong> <strong>D</strong>icom <strong>V</strong>iewer
           </Typography>
-        )
+        );
     }
-  }
+  };
 
   // ---------------------------------------------------------------------------------------------- LINK SERIES
   // #region LINK SERIES
 
   seriesLinkToggle = () => {
-    this.setState({ visibleSeriesLink: !this.state.visibleSeriesLink })
-  }
+    this.setState({ visibleSeriesLink: !this.state.visibleSeriesLink });
+  };
 
   // ---------------------------------------------------------------------------------------------- REFERENCE LINES
   // #region REFERENCE LINES
@@ -1089,56 +1151,69 @@ class App extends PureComponent {
   referenceLinesToggle = () => {
     //console.log('referenceLinesToggle: ')
     //console.log('referenceLinesToggle, mprMode: ', this.state.mprMode)
- //   if (this.state.mprMode) return // disabled b4
-   const visible = !this.state.visibleReferenceLines
-   this.setState({ visibleReferenceLines: visible })
+    //   if (this.state.mprMode) return // disabled b4
+    const visible = !this.state.visibleReferenceLines;
+    this.setState({ visibleReferenceLines: visible });
     if (visible && this.dicomViewersActive.length > 1) {
       //console.log('this.props.activeDcmIndex: ', this.props.activeDcmIndex)
-   // disabled b4
-    //  this.referenceLines.crossViewer = this.getDcmViewerRef(this.props.activeDcmIndex) // this is cross-sectional image
-    //   const crossMprPlane = this.referenceLines.crossViewer.mprPlane
-    //   this.openViewers = this.dicomViewersActive.filter(v => v.layoutIndex !== this.props.activeDcmIndex && crossMprPlane !== v.mprPlane)
-    //   this.referenceLinesDraw() // disabled b4
-      this.referenceLinesShow()
+      // disabled b4
+      //  this.referenceLines.crossViewer = this.getDcmViewerRef(this.props.activeDcmIndex) // this is cross-sectional image
+      //   const crossMprPlane = this.referenceLines.crossViewer.mprPlane
+      //   this.openViewers = this.dicomViewersActive.filter(v => v.layoutIndex !== this.props.activeDcmIndex && crossMprPlane !== v.mprPlane)
+      //   this.referenceLinesDraw() // disabled b4
+      this.referenceLinesShow();
     } else {
-      this.referenceLinesHide()
+      this.referenceLinesHide();
     }
-  }
+  };
 
   referenceLinesShow = () => {
     //console.log('referenceLinesShow, this.props.activeDcmIndex: ', this.props.activeDcmIndex)
-    if (this.state.mprMode || !this.state.visibleReferenceLines || this.dicomViewersActive.length < 2) return
-    this.referenceLines.crossViewer = this.getDcmViewerRef(this.props.activeDcmIndex) // this is cross-sectional image
-    const crossMprPlane = this.referenceLines.crossViewer.mprPlane
-    this.openViewers = this.dicomViewersActive.filter(v => v.layoutIndex !== this.props.activeDcmIndex && crossMprPlane !== v.mprPlane)
-  //  this.referenceLinesDraw() // disabled b4
+    if (
+      this.state.mprMode ||
+      !this.state.visibleReferenceLines ||
+      this.dicomViewersActive.length < 2
+    )
+      return;
+    this.referenceLines.crossViewer = this.getDcmViewerRef(
+      this.props.activeDcmIndex
+    ); // this is cross-sectional image
+    const crossMprPlane = this.referenceLines.crossViewer.mprPlane;
+    this.openViewers = this.dicomViewersActive.filter(
+      (v) =>
+        v.layoutIndex !== this.props.activeDcmIndex &&
+        crossMprPlane !== v.mprPlane
+    );
+    //  this.referenceLinesDraw() // disabled b4
 
     //console.log('referenceLinesShow, this.referenceLines.crossViewer: ', this.referenceLines.crossViewer)
-    this.referenceLines.crossViewer.updateImage()
+    this.referenceLines.crossViewer.updateImage();
     for (let i = 0; i < this.openViewers.length; i++) {
-      this.openViewers[i].referenceLinesBuild(this.referenceLines.crossViewer.image) // this is scout image
+      this.openViewers[i].referenceLinesBuild(
+        this.referenceLines.crossViewer.image
+      ); // this is scout image
     }
-  }
+  };
 
   referenceLinesHide = () => {
-    if (this.state.mprMode || this.openViewers === undefined) return
+    if (this.state.mprMode || this.openViewers === undefined) return;
     for (let i = 0; i < this.openViewers.length; i++) {
-      this.openViewers[i].updateImage() // this is scout image
+      this.openViewers[i].updateImage(); // this is scout image
     }
-  }
+  };
   // disabled b4
-    // referenceLinesDraw = () => {
-    //   if (this.state.mprMode) return
-    //   console.log('referenceLinesDraw: ')
-    //   console.log('referenceLinesDraw, this.referenceLines.crossViewer: ', this.referenceLines.crossViewer)
-    //   this.referenceLines.crossViewer.updateImage()
-    //   for(let i=0; i < this.openViewers.length; i++) {
-    //     this.openViewers[i].referenceLinesBuild(this.referenceLines.crossViewer.image) // this is scout image
-    //   }
-    // }
+  // referenceLinesDraw = () => {
+  //   if (this.state.mprMode) return
+  //   console.log('referenceLinesDraw: ')
+  //   console.log('referenceLinesDraw, this.referenceLines.crossViewer: ', this.referenceLines.crossViewer)
+  //   this.referenceLines.crossViewer.updateImage()
+  //   for(let i=0; i < this.openViewers.length; i++) {
+  //     this.openViewers[i].referenceLinesBuild(this.referenceLines.crossViewer.image) // this is scout image
+  //   }
+  // }
   // disabled b4
 
-  // #endregion 
+  // #endregion
 
   // ---------------------------------------------------------------------------------------------- MPR
   // #region MPR
@@ -1149,165 +1224,183 @@ class App extends PureComponent {
     //console.log('this.dicomViewersRefs[0].files: ', this.dicomViewersRefs[0].files)
 
     // "For the specific case of dual-echo MR images select files with same EchoNumber tag of selected image.
-    // see https://groups.google.com/forum/#!topic/comp.protocols.dicom/zh2TzgbjvdE    
-    const echoNumber = getDicomEchoNumber(this.dicomViewersRefs[this.props.activeDcmIndex].image)
+    // see https://groups.google.com/forum/#!topic/comp.protocols.dicom/zh2TzgbjvdE
+    const echoNumber = getDicomEchoNumber(
+      this.dicomViewersRefs[this.props.activeDcmIndex].image
+    );
 
-    if (this.volume.length > 0 && echoNumber === this.echoNumber) return
+    if (this.volume.length > 0 && echoNumber === this.echoNumber) return;
 
-    this.t0 = performance.now()
+    this.t0 = performance.now();
 
     const files = this.dicomViewersRefs[0].files.filter((a) => {
-      return a.series.echoNumber === echoNumber
-    }
-    )
-    if (files.length < this.files.length) { // until mprMode is true temporary works on files with same EchoNumber
-      this.echoNumber = echoNumber
-      this.dicomViewersRefs[this.props.activeDcmIndex].runTool('setfiles', files)
+      return a.series.echoNumber === echoNumber;
+    });
+    if (files.length < this.files.length) {
+      // until mprMode is true temporary works on files with same EchoNumber
+      this.echoNumber = echoNumber;
+      this.dicomViewersRefs[this.props.activeDcmIndex].runTool(
+        "setfiles",
+        files
+      );
     }
 
-    const sliceIndex = this.state.sliceIndex
-    const xPixelSpacing = getDicomPixelSpacing(files[sliceIndex].image, 1)
-    const spacingBetweenSlice = getDicomSpacingBetweenSlice(files[sliceIndex].image)
-    const sliceThickness = getDicomSliceThickness(files[sliceIndex].image)
-    const length = files[sliceIndex].image.getPixelData().length
-    const sliceLocation = getDicomSliceLocation(files[sliceIndex].image)
+    const sliceIndex = this.state.sliceIndex;
+    const xPixelSpacing = getDicomPixelSpacing(files[sliceIndex].image, 1);
+    const spacingBetweenSlice = getDicomSpacingBetweenSlice(
+      files[sliceIndex].image
+    );
+    const sliceThickness = getDicomSliceThickness(files[sliceIndex].image);
+    const length = files[sliceIndex].image.getPixelData().length;
+    const sliceLocation = getDicomSliceLocation(files[sliceIndex].image);
 
-    this.volume = []
+    this.volume = [];
 
     // see https://stackoverflow.com/questions/58412358/dicom-multiplanar-image-reconstruction
-    this.mprData.zDim = Math.round(files.length * spacingBetweenSlice / xPixelSpacing)
-
-
+    this.mprData.zDim = Math.round(
+      (files.length * spacingBetweenSlice) / xPixelSpacing
+    );
 
     // If spacing between slices is less than slice thickness, the images are not optimal for 3D reconstruction.
     // Try an alternative algorithm based on slice distance.
-    let zDimMethod2 = false
+    let zDimMethod2 = false;
     if (spacingBetweenSlice < sliceThickness && sliceLocation === undefined) {
-      let max = files[sliceIndex].sliceDistance
-      let min = files[sliceIndex].sliceDistance
+      let max = files[sliceIndex].sliceDistance;
+      let min = files[sliceIndex].sliceDistance;
       for (let i = 0; i < files.length; i++) {
-        if (files[i].sliceDistance > max)
-          max = files[i].sliceDistance
-        if (files[i].sliceDistance < min)
-          min = files[i].sliceDistance
+        if (files[i].sliceDistance > max) max = files[i].sliceDistance;
+        if (files[i].sliceDistance < min) min = files[i].sliceDistance;
       }
-      this.mprData.zDim = Math.round(Math.abs(max - min) / xPixelSpacing)
+      this.mprData.zDim = Math.round(Math.abs(max - min) / xPixelSpacing);
       //console.log('method2, this.mprData.zDim: ', this.mprData.zDim)
-      zDimMethod2 = true
+      zDimMethod2 = true;
     }
     //console.log('this.mprData.zDim: ', this.mprData.zDim)
-    this.mprData.zStep = Math.round(this.mprData.zDim / files.length)
+    this.mprData.zStep = Math.round(this.mprData.zDim / files.length);
     //console.log('this.mprData.zStep: ', this.mprData.zStep)
 
-    if (files.length === this.mprData.zDim) { // slices contiguous
+    if (files.length === this.mprData.zDim) {
+      // slices contiguous
       for (let i = 0, len = files.length; i < len; i++) {
-        this.volume.push(files[i].image.getPixelData())
+        this.volume.push(files[i].image.getPixelData());
       }
+    } else if (files.length < this.mprData.zDim) {
+      // gap between slices
 
-    } else if (files.length < this.mprData.zDim) { // gap between slices
-
-      let emptyPlane = new Int16Array(length).fill(0)
+      let emptyPlane = new Int16Array(length).fill(0);
       for (let i = 0, len = this.mprData.zDim; i < len; i++) {
-        this.volume.push(emptyPlane)
+        this.volume.push(emptyPlane);
       }
 
-      let order = []
+      let order = [];
 
       for (let i = 0; i < files.length; i++) {
-        order.push({ iFile: i, instanceNumber: files[i].instanceNumber, sliceDistance: files[i].sliceDistance, sliceLocation: files[i].sliceLocation })
+        order.push({
+          iFile: i,
+          instanceNumber: files[i].instanceNumber,
+          sliceDistance: files[i].sliceDistance,
+          sliceLocation: files[i].sliceLocation,
+        });
       }
-      //console.log('order 1: ', order) 
+      //console.log('order 1: ', order)
 
       if (zDimMethod2) {
         // eliminate eventually duplicates
         order = order.reduce((previous, current) => {
-          let object = previous.filter(object => object.sliceDistance === current.sliceDistance)
+          let object = previous.filter(
+            (object) => object.sliceDistance === current.sliceDistance
+          );
           if (object.length === 0) {
-            previous.push(current)
+            previous.push(current);
           }
-          return previous
-        }, [])
+          return previous;
+        }, []);
 
         order.sort((l, r) => {
-         // return r.sliceDistance - l.sliceDistance // disabled b4
-          return l.instanceNumber - r.instanceNumber
-        })
-        //console.log('order - zDimMethod2: ', order)     
-
+          // return r.sliceDistance - l.sliceDistance // disabled b4
+          return l.instanceNumber - r.instanceNumber;
+        });
+        //console.log('order - zDimMethod2: ', order)
       } else {
-        const reorder = (files[0].sliceDistance < files[1].sliceDistance)
+        const reorder = files[0].sliceDistance < files[1].sliceDistance;
         //console.log('reorder 1: ', reorder)
         // const reorder = files[sliceIndex].sliceLocation < files[1].sliceLocation
         if (reorder) {
           order.sort((l, r) => {
-            return r.sliceDistance - l.sliceDistance
-         //   return r.sliceLocation - l.sliceLocation // disabled b4
-         //    return r.instanceNumber - l.instanceNumber // disabled b4
-          })
+            return r.sliceDistance - l.sliceDistance;
+            //   return r.sliceLocation - l.sliceLocation // disabled b4
+            //    return r.instanceNumber - l.instanceNumber // disabled b4
+          });
           //console.log('order - no zDimMethod2, 1: ', order)
         } else {
-          const isOnRows = getDicomImageXOnRows(files[sliceIndex].image)
-          const reorder = Math.sign(files[0].sliceDistance) * Math.sign(files[0].sliceLocation) < 0
+          const isOnRows = getDicomImageXOnRows(files[sliceIndex].image);
+          const reorder =
+            Math.sign(files[0].sliceDistance) *
+              Math.sign(files[0].sliceLocation) <
+            0;
           //console.log('reorder 2: ', reorder)
           if (reorder) {
             order.sort((l, r) => {
-              if (isOnRows)
-                return l.sliceDistance - r.sliceDistance
-              else
-                return r.sliceDistance - l.sliceDistance
-            })
+              if (isOnRows) return l.sliceDistance - r.sliceDistance;
+              else return r.sliceDistance - l.sliceDistance;
+            });
             //console.log('order - no zDimMethod2, 2: ', order)
           }
         }
       }
-     
-            // order.sort((l, r) => { // disabled b4
-            //   return r.sliceDistance - l.sliceDistance
-            //   // return l.instanceNumber - r.instanceNumber
-            // })  // disabled b4
-    
+
+      // order.sort((l, r) => { // disabled b4
+      //   return r.sliceDistance - l.sliceDistance
+      //   // return l.instanceNumber - r.instanceNumber
+      // })  // disabled b4
+
       //console.log('order 2: ', order)
 
-      this.mprData.instanceNumberOrder = files[order[0].iFile].instanceNumber < files[order[1].iFile].instanceNumber ? 1 : -1
-      this.mprData.indexMax = files.length
+      this.mprData.instanceNumberOrder =
+        files[order[0].iFile].instanceNumber <
+        files[order[1].iFile].instanceNumber
+          ? 1
+          : -1;
+      this.mprData.indexMax = files.length;
 
-      let intervals = [0]
-      this.volume[0] = files[order[0].iFile].image.getPixelData()
-      this.volume[this.mprData.zDim - 1] = files[order[order.length - 1].iFile].image.getPixelData()
-      const step = (this.mprData.zDim - 2) / (order.length - 2)
-      let i = 0
+      let intervals = [0];
+      this.volume[0] = files[order[0].iFile].image.getPixelData();
+      this.volume[this.mprData.zDim - 1] =
+        files[order[order.length - 1].iFile].image.getPixelData();
+      const step = (this.mprData.zDim - 2) / (order.length - 2);
+      let i = 0;
       for (let k = 1; k <= order.length - 2; k++) {
-        i = Math.ceil(i + step)
+        i = Math.ceil(i + step);
         //console.log(`i: ${i},  k: ${k},  order[k].iFile: ${order[k].iFile}`)
-        this.volume[i] = files[order[k].iFile].image.getPixelData() // order[k-1].iFile
-        intervals.push(i)
+        this.volume[i] = files[order[k].iFile].image.getPixelData(); // order[k-1].iFile
+        intervals.push(i);
       }
-      intervals.push(this.mprData.zDim - 1)
+      intervals.push(this.mprData.zDim - 1);
 
-      const interpolationMethod = getSettingsMprInterpolation()
+      const interpolationMethod = getSettingsMprInterpolation();
 
-      if (interpolationMethod === 'no') {
+      if (interpolationMethod === "no") {
         // build missing planes without interpolation, simple duplicate
         for (let i = 0; i < intervals.length - 1; i++)
           for (let j = intervals[i] + 1; j <= intervals[i + 1] - 1; j++)
-            this.volume[j] = this.volume[intervals[i + 1]]
-      } else if (interpolationMethod === 'weightedlinear') {
+            this.volume[j] = this.volume[intervals[i + 1]];
+      } else if (interpolationMethod === "weightedlinear") {
         // build the interpolate planes between original planes
         for (let i = 0; i < intervals.length - 1; i++) {
-          const step = intervals[i + 1] - intervals[i]
+          const step = intervals[i + 1] - intervals[i];
           for (let j = intervals[i] + 1; j < intervals[i + 1]; j++) {
-            let p = new Int16Array(length)
-            const w = (j - intervals[i]) / step
+            let p = new Int16Array(length);
+            const w = (j - intervals[i]) / step;
             for (let k = 0; k < length - 1; k++) {
               // simple linear interpolation
               // const p0 = this.volume[intervals[i]][k]
               // const p1 = this.volume[intervals[i+1]][k]
-              // p[k] = (p0+p1)/2   
+              // p[k] = (p0+p1)/2
 
               // weighted linear interpolation
-              const p0 = this.volume[intervals[i]][k] * (1 - w)
-              const p1 = this.volume[intervals[i + 1]][k] * w
-              p[k] = p0 + p1
+              const p0 = this.volume[intervals[i]][k] * (1 - w);
+              const p1 = this.volume[intervals[i + 1]][k] * w;
+              p[k] = p0 + p1;
 
               // weighted bilinear interpolation (disabled b4)
               // if (k-1 > 0 && k+1 < length) {
@@ -1318,385 +1411,482 @@ class App extends PureComponent {
               //   const p0 = this.volume[intervals[i]][k] * (1-w) * 0.75 + this.volume[intervals[i]][k+1] * (1-w) * 0.25
               //   const p1 = this.volume[intervals[i+1]][k] * w * 0.5 + this.volume[intervals[i+1]][k+1] * w * 0.25
               //   p[k] = p0+p1
-              // } else { // k+1 > length 
+              // } else { // k+1 > length
               //   const p0 = this.volume[intervals[i]][k] * (1-w) * 0.75 + this.volume[intervals[i]][k-1] * (1-w) * 0.25
               //   const p1 = this.volume[intervals[i+1]][k] * w * 0.5 + this.volume[intervals[i+1]][k-1] * w * 0.25
               //   p[k] = p0+p1
               // }
             }
 
-            this.volume[j] = p
+            this.volume[j] = p;
           }
         }
       }
 
-      this.t1 = performance.now()
-      console.log(`performance volume building: ${this.t1 - this.t0} milliseconds`)
-
-    } else { // overlapping slices
-      this.mprData.zStep = Math.round(files.length / this.mprData.zDim)
+      this.t1 = performance.now();
+      console.log(
+        `performance volume building: ${this.t1 - this.t0} milliseconds`
+      );
+    } else {
+      // overlapping slices
+      this.mprData.zStep = Math.round(files.length / this.mprData.zDim);
       for (let i = 0, len = this.mprData.zDim; i < len; i++) {
-        const k = i * this.mprData.zStep
-        this.volume.push(files[k].image.getPixelData())
+        const k = i * this.mprData.zStep;
+        this.volume.push(files[k].image.getPixelData());
       }
     }
 
-    const index = Math.round(files.length / 2)
+    const index = Math.round(files.length / 2);
     this.setState({ sliceIndex: index }, () => {
       if (this.state.visibleMprOrthogonal) {
-        this.changeToOrthogonalView()
-
+        this.changeToOrthogonalView();
       } else if (this.state.visibleMprSagittal) {
-        this.changeToSagittalView()
-
+        this.changeToSagittalView();
       } else if (this.state.visibleMprCoronal) {
-        this.changeToCoronalView()
-
-      } else { // axial
-        this.changeToAxialView()
+        this.changeToCoronalView();
+      } else {
+        // axial
+        this.changeToAxialView();
       }
-    })
-
-  }
+    });
+  };
 
   changeToOrthogonalView = () => {
     //console.log('changeToOrthogonalView - files: ', this.dicomViewersRefs[0].files)
 
-    this.setState({ sliceMax: this.dicomViewersRefs[0].files.length })
+    this.setState({ sliceMax: this.dicomViewersRefs[0].files.length });
 
-    this.changeLayout(1, 3)
+    this.changeLayout(1, 3);
 
-    const index = Math.trunc(this.dicomViewersRefs[0].files.length / 2)
+    const index = Math.trunc(this.dicomViewersRefs[0].files.length / 2);
 
-    this.setState({ visibleVolumeBuilding: false, sliceIndex: index, mprMode: true }, () => {
-      const plane = this.mprPlanePosition()
+    this.setState(
+      { visibleVolumeBuilding: false, sliceIndex: index, mprMode: true },
+      () => {
+        const plane = this.mprPlanePosition();
 
-      if (this.dicomViewersRefs[0].volume === null)
-        this.dicomViewersRefs[0].volume = this.volume
+        if (this.dicomViewersRefs[0].volume === null)
+          this.dicomViewersRefs[0].volume = this.volume;
 
-      this.dicomViewersRefs[0].runTool('openimage', index)
+        this.dicomViewersRefs[0].runTool("openimage", index);
 
-      if (this.dicomViewersRefs[1].volume === null)
-        this.dicomViewersRefs[1].volume = this.volume
+        if (this.dicomViewersRefs[1].volume === null)
+          this.dicomViewersRefs[1].volume = this.volume;
 
-      this.dicomViewersRefs[1].runTool('setfiles', this.files)
-      this.dicomViewersRefs[1].explorerIndex = this.dicomViewersRefs[0].explorerIndex
-      this.dicomViewersRefs[1].sliceMax = this.dicomViewersRefs[0].files[index].image.columns
-      const xzIndex = Math.trunc(this.dicomViewersRefs[1].sliceMax / 2)
-      this.dicomViewersRefs[1].mprRenderXZPlane(this.dicomViewersRefs[0].filename, plane, xzIndex, this.mprData)
+        this.dicomViewersRefs[1].runTool("setfiles", this.files);
+        this.dicomViewersRefs[1].explorerIndex =
+          this.dicomViewersRefs[0].explorerIndex;
+        this.dicomViewersRefs[1].sliceMax =
+          this.dicomViewersRefs[0].files[index].image.columns;
+        const xzIndex = Math.trunc(this.dicomViewersRefs[1].sliceMax / 2);
+        this.dicomViewersRefs[1].mprRenderXZPlane(
+          this.dicomViewersRefs[0].filename,
+          plane,
+          xzIndex,
+          this.mprData
+        );
 
-      if (this.dicomViewersRefs[2].volume === null)
-        this.dicomViewersRefs[2].volume = this.volume
+        if (this.dicomViewersRefs[2].volume === null)
+          this.dicomViewersRefs[2].volume = this.volume;
 
-      this.dicomViewersRefs[2].runTool('setfiles', this.files)
-      this.dicomViewersRefs[2].explorerIndex = this.dicomViewersRefs[0].explorerIndex
-      this.dicomViewersRefs[2].sliceMax = this.dicomViewersRefs[0].files[index].image.columns
-      const yzIndex = Math.trunc(this.dicomViewersRefs[2].sliceMax / 2)
-      this.dicomViewersRefs[2].mprRenderYZPlane(this.dicomViewersRefs[0].filename, plane, yzIndex, this.mprData)
-    })
-
-  }
+        this.dicomViewersRefs[2].runTool("setfiles", this.files);
+        this.dicomViewersRefs[2].explorerIndex =
+          this.dicomViewersRefs[0].explorerIndex;
+        this.dicomViewersRefs[2].sliceMax =
+          this.dicomViewersRefs[0].files[index].image.columns;
+        const yzIndex = Math.trunc(this.dicomViewersRefs[2].sliceMax / 2);
+        this.dicomViewersRefs[2].mprRenderYZPlane(
+          this.dicomViewersRefs[0].filename,
+          plane,
+          yzIndex,
+          this.mprData
+        );
+      }
+    );
+  };
 
   changeToSagittalView = () => {
     //console.log('changeToSagittalView: ')
 
-    this.changeLayout(1, 1)
+    this.changeLayout(1, 1);
 
     this.setState({ visibleVolumeBuilding: false }, () => {
-      const plane = this.mprPlanePosition()
+      const plane = this.mprPlanePosition();
 
       if (this.dicomViewersRefs[this.props.activeDcmIndex].volume === null)
-        this.dicomViewersRefs[this.props.activeDcmIndex].volume = this.volume
+        this.dicomViewersRefs[this.props.activeDcmIndex].volume = this.volume;
 
-      if (plane === 'sagittal') {
-        this.dicomViewersRefs[0].runTool('setfiles', this.files) // due to EchoNumber can be changed
-        const sliceMax = this.dicomViewersRefs[0].files === null ? 1 : this.dicomViewersRefs[0].files.length
-        const index = Math.trunc(sliceMax / 2)
-        this.setState({ sliceIndex: index, sliceMax: sliceMax, mprMode: false }, () => {
-          this.dicomViewersRefs[this.props.activeDcmIndex].sliceMax = sliceMax
-          this.dicomViewersRefs[this.props.activeDcmIndex].runTool('openimage', index)
-        })
-      } else if (plane === 'axial') {
-        const sliceMax = this.dicomViewersRefs[0].files[0].image.rows // this.mprData.zDim 
-        const index = Math.trunc(sliceMax / 2)
+      if (plane === "sagittal") {
+        this.dicomViewersRefs[0].runTool("setfiles", this.files); // due to EchoNumber can be changed
+        const sliceMax =
+          this.dicomViewersRefs[0].files === null
+            ? 1
+            : this.dicomViewersRefs[0].files.length;
+        const index = Math.trunc(sliceMax / 2);
+        this.setState(
+          { sliceIndex: index, sliceMax: sliceMax, mprMode: false },
+          () => {
+            this.dicomViewersRefs[this.props.activeDcmIndex].sliceMax =
+              sliceMax;
+            this.dicomViewersRefs[this.props.activeDcmIndex].runTool(
+              "openimage",
+              index
+            );
+          }
+        );
+      } else if (plane === "axial") {
+        const sliceMax = this.dicomViewersRefs[0].files[0].image.rows; // this.mprData.zDim
+        const index = Math.trunc(sliceMax / 2);
         this.setState({ sliceIndex: index, sliceMax: sliceMax }, () => {
-          this.dicomViewersRefs[this.props.activeDcmIndex].sliceMax = sliceMax
-          this.dicomViewersRefs[this.props.activeDcmIndex].mprRenderYZPlane(this.dicomViewersRefs[0].filename, plane, index, this.mprData)
-        })
+          this.dicomViewersRefs[this.props.activeDcmIndex].sliceMax = sliceMax;
+          this.dicomViewersRefs[this.props.activeDcmIndex].mprRenderYZPlane(
+            this.dicomViewersRefs[0].filename,
+            plane,
+            index,
+            this.mprData
+          );
+        });
       } else {
-        const sliceMax = this.dicomViewersRefs[0].files[0].image.columns // this.mprData.zDim 
-        const index = Math.trunc(sliceMax / 2)
+        const sliceMax = this.dicomViewersRefs[0].files[0].image.columns; // this.mprData.zDim
+        const index = Math.trunc(sliceMax / 2);
         this.setState({ sliceIndex: index, sliceMax: sliceMax }, () => {
-          this.dicomViewersRefs[this.props.activeDcmIndex].sliceMax = sliceMax
-          this.dicomViewersRefs[this.props.activeDcmIndex].mprRenderXZPlane(this.dicomViewersRefs[0].filename, plane, index, this.mprData)
-        })
+          this.dicomViewersRefs[this.props.activeDcmIndex].sliceMax = sliceMax;
+          this.dicomViewersRefs[this.props.activeDcmIndex].mprRenderXZPlane(
+            this.dicomViewersRefs[0].filename,
+            plane,
+            index,
+            this.mprData
+          );
+        });
       }
-    })
-  }
+    });
+  };
 
   changeToCoronalView = () => {
-    this.changeLayout(1, 1)
+    this.changeLayout(1, 1);
 
     this.setState({ visibleVolumeBuilding: false }, () => {
-      const plane = this.mprPlanePosition()
+      const plane = this.mprPlanePosition();
 
       if (this.dicomViewersRefs[this.props.activeDcmIndex].volume === null)
-        this.dicomViewersRefs[this.props.activeDcmIndex].volume = this.volume
+        this.dicomViewersRefs[this.props.activeDcmIndex].volume = this.volume;
 
-      if (plane === 'coronal') {
-        this.dicomViewersRefs[0].runTool('setfiles', this.files) // due to EchoNumber can be changed
-        const sliceMax = this.dicomViewersRefs[0].files === null ? 1 : this.dicomViewersRefs[0].files.length
-        const index = Math.trunc(sliceMax / 2)
-        this.setState({ sliceIndex: index, sliceMax: sliceMax, mprMode: false }, () => {
-          this.dicomViewersRefs[this.props.activeDcmIndex].sliceMax = sliceMax
-          this.dicomViewersRefs[this.props.activeDcmIndex].runTool('openimage', index)
-        })
-
-      } else if (plane === 'axial') {
-        const sliceMax = this.dicomViewersRefs[0].files[0].image.columns // this.mprData.zDim 
-        const index = Math.trunc(sliceMax / 2)
+      if (plane === "coronal") {
+        this.dicomViewersRefs[0].runTool("setfiles", this.files); // due to EchoNumber can be changed
+        const sliceMax =
+          this.dicomViewersRefs[0].files === null
+            ? 1
+            : this.dicomViewersRefs[0].files.length;
+        const index = Math.trunc(sliceMax / 2);
+        this.setState(
+          { sliceIndex: index, sliceMax: sliceMax, mprMode: false },
+          () => {
+            this.dicomViewersRefs[this.props.activeDcmIndex].sliceMax =
+              sliceMax;
+            this.dicomViewersRefs[this.props.activeDcmIndex].runTool(
+              "openimage",
+              index
+            );
+          }
+        );
+      } else if (plane === "axial") {
+        const sliceMax = this.dicomViewersRefs[0].files[0].image.columns; // this.mprData.zDim
+        const index = Math.trunc(sliceMax / 2);
         this.setState({ sliceIndex: index, sliceMax: sliceMax }, () => {
-          this.dicomViewersRefs[this.props.activeDcmIndex].sliceMax = sliceMax
-          this.dicomViewersRefs[this.props.activeDcmIndex].mprRenderXZPlane(this.dicomViewersRefs[0].filename, plane, index, this.mprData)
-        })
-
-      } else { // plane is sagittal
-        const sliceMax = this.dicomViewersRefs[0].files[0].image.rows // this.mprData.zDim 
-        const index = Math.trunc(sliceMax / 2)
+          this.dicomViewersRefs[this.props.activeDcmIndex].sliceMax = sliceMax;
+          this.dicomViewersRefs[this.props.activeDcmIndex].mprRenderXZPlane(
+            this.dicomViewersRefs[0].filename,
+            plane,
+            index,
+            this.mprData
+          );
+        });
+      } else {
+        // plane is sagittal
+        const sliceMax = this.dicomViewersRefs[0].files[0].image.rows; // this.mprData.zDim
+        const index = Math.trunc(sliceMax / 2);
         this.setState({ sliceIndex: index, sliceMax: sliceMax }, () => {
-          this.dicomViewersRefs[this.props.activeDcmIndex].sliceMax = sliceMax
-          this.dicomViewersRefs[this.props.activeDcmIndex].mprRenderYZPlane(this.dicomViewersRefs[0].filename, plane, index, this.mprData)
-        })
+          this.dicomViewersRefs[this.props.activeDcmIndex].sliceMax = sliceMax;
+          this.dicomViewersRefs[this.props.activeDcmIndex].mprRenderYZPlane(
+            this.dicomViewersRefs[0].filename,
+            plane,
+            index,
+            this.mprData
+          );
+        });
       }
-    })
-  }
+    });
+  };
 
   changeToAxialView = () => {
-    this.changeLayout(1, 1)
+    this.changeLayout(1, 1);
 
     this.setState({ visibleVolumeBuilding: false }, () => {
-      const plane = this.mprPlanePosition()
+      const plane = this.mprPlanePosition();
 
       if (this.dicomViewersRefs[this.props.activeDcmIndex].volume === null)
-        this.dicomViewersRefs[this.props.activeDcmIndex].volume = this.volume
+        this.dicomViewersRefs[this.props.activeDcmIndex].volume = this.volume;
 
-      if (plane === 'axial') {
-        this.dicomViewersRefs[0].runTool('setfiles', this.files) // due to EchoNumber can be changed
-        const sliceMax = this.dicomViewersRefs[0].files === null ? 1 : this.dicomViewersRefs[0].files.length
-        const index = Math.trunc(sliceMax / 2)
-        this.setState({ sliceIndex: index, sliceMax: sliceMax, mprMode: false }, () => {
-          this.dicomViewersRefs[this.props.activeDcmIndex].sliceMax = sliceMax
-          this.dicomViewersRefs[this.props.activeDcmIndex].runTool('openimage', index)
-        })
-
-
-      } else if (plane === 'sagittal') {
-        const sliceMax = this.dicomViewersRefs[0].files[0].image.columns // this.mprData.zDim 
-        const index = Math.trunc(sliceMax / 2)
+      if (plane === "axial") {
+        this.dicomViewersRefs[0].runTool("setfiles", this.files); // due to EchoNumber can be changed
+        const sliceMax =
+          this.dicomViewersRefs[0].files === null
+            ? 1
+            : this.dicomViewersRefs[0].files.length;
+        const index = Math.trunc(sliceMax / 2);
+        this.setState(
+          { sliceIndex: index, sliceMax: sliceMax, mprMode: false },
+          () => {
+            this.dicomViewersRefs[this.props.activeDcmIndex].sliceMax =
+              sliceMax;
+            this.dicomViewersRefs[this.props.activeDcmIndex].runTool(
+              "openimage",
+              index
+            );
+          }
+        );
+      } else if (plane === "sagittal") {
+        const sliceMax = this.dicomViewersRefs[0].files[0].image.columns; // this.mprData.zDim
+        const index = Math.trunc(sliceMax / 2);
         this.setState({ sliceIndex: index, sliceMax: sliceMax }, () => {
-          this.dicomViewersRefs[this.props.activeDcmIndex].sliceMax = sliceMax
-          this.dicomViewersRefs[this.props.activeDcmIndex].mprRenderXZPlane(this.dicomViewersRefs[0].filename, plane, index, this.mprData)
-        })
-
-
+          this.dicomViewersRefs[this.props.activeDcmIndex].sliceMax = sliceMax;
+          this.dicomViewersRefs[this.props.activeDcmIndex].mprRenderXZPlane(
+            this.dicomViewersRefs[0].filename,
+            plane,
+            index,
+            this.mprData
+          );
+        });
       } else {
-        const sliceMax = this.dicomViewersRefs[0].files[0].image.rows // this.mprData.zDim 
-        const index = Math.trunc(sliceMax / 2)
+        const sliceMax = this.dicomViewersRefs[0].files[0].image.rows; // this.mprData.zDim
+        const index = Math.trunc(sliceMax / 2);
         this.setState({ sliceIndex: index, sliceMax: sliceMax }, () => {
-          this.dicomViewersRefs[this.props.activeDcmIndex].sliceMax = sliceMax
-          this.dicomViewersRefs[this.props.activeDcmIndex].mprRenderYZPlane(this.dicomViewersRefs[0].filename, plane, index, this.mprData)
-        })
+          this.dicomViewersRefs[this.props.activeDcmIndex].sliceMax = sliceMax;
+          this.dicomViewersRefs[this.props.activeDcmIndex].mprRenderYZPlane(
+            this.dicomViewersRefs[0].filename,
+            plane,
+            index,
+            this.mprData
+          );
+        });
       }
-    })
-  }
+    });
+  };
 
   mprPlanePosition = (force = false, index = this.props.activeDcmIndex) => {
     //console.log('App - mprPlanePosition: ', index)
-    if (this.mprPlane === '' || force) {
-      this.mprPlane = this.dicomViewersRefs[index].mprPlanePosition()
+    if (this.mprPlane === "" || force) {
+      this.mprPlane = this.dicomViewersRefs[index].mprPlanePosition();
       if (!this.state.visibleMprOrthogonal) {
-        if (this.mprPlane === 'sagittal')
-          this.setState({ visibleMprOrthogonal: false, visibleMprSagittal: true, visibleMprAxial: false, visibleMprCoronal: false })
-        else if (this.mprPlane === 'coronal')
-          this.setState({ visibleMprOrthogonal: false, visibleMprSagittal: false, visibleMprAxial: false, visibleMprCoronal: true })
+        if (this.mprPlane === "sagittal")
+          this.setState({
+            visibleMprOrthogonal: false,
+            visibleMprSagittal: true,
+            visibleMprAxial: false,
+            visibleMprCoronal: false,
+          });
+        else if (this.mprPlane === "coronal")
+          this.setState({
+            visibleMprOrthogonal: false,
+            visibleMprSagittal: false,
+            visibleMprAxial: false,
+            visibleMprCoronal: true,
+          });
         else
-          this.setState({ visibleMprOrthogonal: false, visibleMprSagittal: false, visibleMprAxial: true, visibleMprCoronal: false })
+          this.setState({
+            visibleMprOrthogonal: false,
+            visibleMprSagittal: false,
+            visibleMprAxial: true,
+            visibleMprCoronal: false,
+          });
       }
     }
-    return this.mprPlane
-  }
+    return this.mprPlane;
+  };
 
   mpr3D = () => {
-//     const gfx = (
-// <Graphics3d/>);
-// return gfx;
-  }
+    //     const gfx = (
+    // <Graphics3d/>);
+    // return gfx;
+  };
 
   mprOrthogonal = () => {
-    const visibleMprOrthogonal = this.state.visibleMprOrthogonal
+    const visibleMprOrthogonal = this.state.visibleMprOrthogonal;
     if (!visibleMprOrthogonal) {
       this.mprData.plane = {
         from: this.mprPlane,
-        to: 'orthogonal'
-      }
-      this.setState({
-        visibleMprOrthogonal: true,
-        visibleMprCoronal: false,
-        visibleMprSagittal: false,
-        visibleMprAxial: false
-      }, () => {
-        if (this.volume.length === 0) {
-          this.setState({ visibleVolumeBuilding: true }, () => {
-            setTimeout(() => {
-              this.mprBuildVolume()
-            }, 100)
-          })
-        } else {
-          this.changeToOrthogonalView()
+        to: "orthogonal",
+      };
+      this.setState(
+        {
+          visibleMprOrthogonal: true,
+          visibleMprCoronal: false,
+          visibleMprSagittal: false,
+          visibleMprAxial: false,
+        },
+        () => {
+          if (this.volume.length === 0) {
+            this.setState({ visibleVolumeBuilding: true }, () => {
+              setTimeout(() => {
+                this.mprBuildVolume();
+              }, 100);
+            });
+          } else {
+            this.changeToOrthogonalView();
+          }
         }
-      })
+      );
     }
-  }
+  };
 
   mprSagittal = () => {
-    const visibleMprSagittal = this.state.visibleMprSagittal
+    const visibleMprSagittal = this.state.visibleMprSagittal;
     if (!visibleMprSagittal) {
       this.mprData.plane = {
         from: this.mprPlane,
-        to: 'sagittal'
-      }
-      this.setState({
-        visibleMprOrthogonal: false,
-        visibleMprSagittal: true,
-        visibleMprCoronal: false,
-        visibleMprAxial: false
-      }, () => {
-        if (this.volume.length === 0) {
-          this.setState({ visibleVolumeBuilding: true }, () => {
-            setTimeout(() => {
-              this.mprBuildVolume()
-            }, 100)
-          })
-        } else {
-          this.changeToSagittalView()
+        to: "sagittal",
+      };
+      this.setState(
+        {
+          visibleMprOrthogonal: false,
+          visibleMprSagittal: true,
+          visibleMprCoronal: false,
+          visibleMprAxial: false,
+        },
+        () => {
+          if (this.volume.length === 0) {
+            this.setState({ visibleVolumeBuilding: true }, () => {
+              setTimeout(() => {
+                this.mprBuildVolume();
+              }, 100);
+            });
+          } else {
+            this.changeToSagittalView();
+          }
         }
-      })
+      );
     }
-  }
+  };
 
   mprCoronal = () => {
-    const visibleMprCoronal = this.state.visibleMprCoronal
+    const visibleMprCoronal = this.state.visibleMprCoronal;
     if (!visibleMprCoronal) {
       this.mprData.plane = {
         from: this.mprPlane,
-        to: 'coronal'
-      }
-      this.setState({
-        visibleMprOrthogonal: false,
-        visibleMprSagittal: false,
-        visibleMprCoronal: true,
-        visibleMprAxial: false
-      }, () => {
-        if (this.volume.length === 0) {
-          this.setState({ visibleVolumeBuilding: true }, () => {
-            setTimeout(() => {
-              this.mprBuildVolume()
-            }, 100)
-          })
-        } else {
-          this.changeToCoronalView()
+        to: "coronal",
+      };
+      this.setState(
+        {
+          visibleMprOrthogonal: false,
+          visibleMprSagittal: false,
+          visibleMprCoronal: true,
+          visibleMprAxial: false,
+        },
+        () => {
+          if (this.volume.length === 0) {
+            this.setState({ visibleVolumeBuilding: true }, () => {
+              setTimeout(() => {
+                this.mprBuildVolume();
+              }, 100);
+            });
+          } else {
+            this.changeToCoronalView();
+          }
         }
-      })
+      );
     }
-  }
+  };
 
   mprAxial = () => {
-    const visibleMprAxial = this.state.visibleMprAxial
+    const visibleMprAxial = this.state.visibleMprAxial;
     if (!visibleMprAxial) {
       this.mprData.plane = {
         from: this.mprPlane,
-        to: 'axial'
-      }
-      this.setState({
-        visibleMprOrthogonal: false,
-        visibleMprSagittal: false,
-        visibleMprCoronal: false,
-        visibleMprAxial: true
-      }, () => {
-        if (this.volume.length === 0) {
-          this.setState({ visibleVolumeBuilding: true }, () => {
-            setTimeout(() => {
-              this.mprBuildVolume()
-            }, 100)
-          })
-        } else {
-          this.changeToAxialView()
+        to: "axial",
+      };
+      this.setState(
+        {
+          visibleMprOrthogonal: false,
+          visibleMprSagittal: false,
+          visibleMprCoronal: false,
+          visibleMprAxial: true,
+        },
+        () => {
+          if (this.volume.length === 0) {
+            this.setState({ visibleVolumeBuilding: true }, () => {
+              setTimeout(() => {
+                this.mprBuildVolume();
+              }, 100);
+            });
+          } else {
+            this.changeToAxialView();
+          }
         }
-      })
+      );
     }
-  }
+  };
 
-  // #endregion 
+  // #endregion
 
   // ---------------------------------------------------------------------------------------------- FILES/SLICE MANIPULATION
   //#region FILES/SLICE MANIPULATION
 
   listOpenFilesFirstFrame = () => {
-    const index = 0
+    const index = 0;
     this.setState({ sliceIndex: index }, () => {
-      this.isSliceChange = true
-      this.handleOpenImage(index)
-    })
-  }
+      this.isSliceChange = true;
+      this.handleOpenImage(index);
+    });
+  };
 
   listOpenFilesPreviousFrame = () => {
-    let index = this.state.sliceIndex
-    index = index === 0 ? this.state.sliceMax - 1 : index - 1
+    let index = this.state.sliceIndex;
+    index = index === 0 ? this.state.sliceMax - 1 : index - 1;
     this.setState({ sliceIndex: index }, () => {
-      this.isSliceChange = true
-      this.handleOpenImage(index)
-      this.syncActiveDcmViewersSamePlane(-1)
-    })
-  }
+      this.isSliceChange = true;
+      this.handleOpenImage(index);
+      this.syncActiveDcmViewersSamePlane(-1);
+    });
+  };
 
   listOpenFilesNextFrame = () => {
-    let index = this.state.sliceIndex
-    index = index === this.state.sliceMax - 1 ? 0 : index + 1
+    let index = this.state.sliceIndex;
+    index = index === this.state.sliceMax - 1 ? 0 : index + 1;
     this.setState({ sliceIndex: index }, () => {
-      this.isSliceChange = true
-      this.handleOpenImage(index)
-      this.syncActiveDcmViewersSamePlane(+1)
-    })
-  }
+      this.isSliceChange = true;
+      this.handleOpenImage(index);
+      this.syncActiveDcmViewersSamePlane(+1);
+    });
+  };
 
   listOpenFilesLastFrame = () => {
-    const index = this.state.sliceMax - 1
+    const index = this.state.sliceMax - 1;
     this.setState({ sliceIndex: index }, () => {
-      this.isSliceChange = true
-      this.handleOpenImage(index)
-    })
-  }
+      this.isSliceChange = true;
+      this.handleOpenImage(index);
+    });
+  };
 
   listOpenFilesScrolling = () => {
-    const scrolling = this.state.listOpenFilesScrolling
+    const scrolling = this.state.listOpenFilesScrolling;
     this.setState({ listOpenFilesScrolling: !scrolling }, () => {
       if (scrolling) {
-        clearInterval(this.timerScrolling)
+        clearInterval(this.timerScrolling);
       } else {
         this.timerScrolling = setInterval(() => {
-          this.listOpenFilesNextFrame()
-        }, 500)
+          this.listOpenFilesNextFrame();
+        }, 500);
       }
-    })
-  }
+    });
+  };
 
   handleSliceChange = (event, value) => {
     this.setState({ sliceIndex: Math.floor(value) }, () => {
-      let index = this.state.sliceIndex
-      this.isSliceChange = true
-      this.handleOpenImage(index)
-    })
-  }
+      let index = this.state.sliceIndex;
+      this.isSliceChange = true;
+      this.handleOpenImage(index);
+    });
+  };
 
   //#endregion
 
@@ -1705,169 +1895,213 @@ class App extends PureComponent {
 
   explorerOnSelectSeries = (files, explorerIndex) => {
     //console.log('explorerOnSelectSeries: ', files)
-    let index = this.props.activeDcmIndex
+    let index = this.props.activeDcmIndex;
     if (this.state.mprMode) {
-      index = 0
+      index = 0;
       this.setState({
         sliceIndex: 0,
         sliceMax: 1,
         visibleMprOrthogonal: false,
         visibleMprCoronal: false,
         visibleMprSagittal: false,
-        visibleMprAxial: false
-      })
-      this.props.setActiveDcmIndex(index)
-      this.changeLayout(1, 1)
+        visibleMprAxial: false,
+      });
+      this.props.setActiveDcmIndex(index);
+      this.changeLayout(1, 1);
     }
 
-    this.files = files
-    this.mprPlane = ''
-    this.mprData = {}
-    this.volume = []
+    this.files = files;
+    this.mprPlane = "";
+    this.mprData = {};
+    this.volume = [];
 
-    this.dicomViewersRefs[index].runTool('setfiles', this.files)
-    this.dicomViewersRefs[index].explorerIndex = explorerIndex
+    this.dicomViewersRefs[index].runTool("setfiles", this.files);
+    this.dicomViewersRefs[index].explorerIndex = explorerIndex;
 
-    const sliceMax = this.dicomViewersRefs[index].sliceMax
-    const sliceIndex = 0 // this.dicomViewersRefs[this.props.activeDcmIndex].sliceIndex
-    this.setState({ sliceMax: sliceMax, sliceIndex: sliceIndex, mprMode: false }, () => {
-      this.handleOpenImage(sliceIndex)
-    })
-  }
+    const sliceMax = this.dicomViewersRefs[index].sliceMax;
+    const sliceIndex = 0; // this.dicomViewersRefs[this.props.activeDcmIndex].sliceIndex
+    this.setState(
+      { sliceMax: sliceMax, sliceIndex: sliceIndex, mprMode: false },
+      () => {
+        this.handleOpenImage(sliceIndex);
+      }
+    );
+  };
 
   //#endregion EXPLORER
 
   getActiveDcmViewers = () => {
     //console.log('getActiveDcmViewers', this.dicomViewersRefs)
-    this.dicomViewersActive = this.dicomViewersRefs.filter(v => v !== undefined && v.image !== null)
+    this.dicomViewersActive = this.dicomViewersRefs.filter(
+      (v) => v !== undefined && v.image !== null
+    );
     //console.log('dicomViewersActive: ', this.dicomViewersActive)
-    return this.dicomViewersActive.length
-  }
+    return this.dicomViewersActive.length;
+  };
 
   getActiveDcmViewersSameStudy = () => {
     //console.log('App - this.dicomViewersActiveSameStudy - this.dicomViewersRefs: ', this.dicomViewersRefs)
-    const studyId = getDicomStudyId(this.dicomViewersRefs[this.props.activeDcmIndex].image)
-    this.dicomViewersActiveSameStudy = this.dicomViewersRefs.filter(v => v !== undefined && getDicomStudyId(v.image) === studyId)
+    const studyId = getDicomStudyId(
+      this.dicomViewersRefs[this.props.activeDcmIndex].image
+    );
+    this.dicomViewersActiveSameStudy = this.dicomViewersRefs.filter(
+      (v) => v !== undefined && getDicomStudyId(v.image) === studyId
+    );
     //console.log('App - this.dicomViewersActiveSameStudy', this.dicomViewersActiveSameStudy)
-    return this.dicomViewersActiveSameStudy.length
-  }
+    return this.dicomViewersActiveSameStudy.length;
+  };
 
   getActiveDcmViewersSamePlane = () => {
-    this.dicomViewersActiveSamePlane = []
+    this.dicomViewersActiveSamePlane = [];
     //console.log('App - getActiveDcmViewersSamePlane - this.props.activeDcmIndex: ', this.props.activeDcmIndex)
-    const plane = this.dicomViewersRefs[this.props.activeDcmIndex].mprPlane
+    const plane = this.dicomViewersRefs[this.props.activeDcmIndex].mprPlane;
     //console.log('App - getActiveDcmViewersSamePlane - plane: ', plane)
     for (let i = 0; i < this.dicomViewersActiveSameStudy.length; i++) {
       //console.log('App - getActiveDcmViewersSamePlane - i: ', i)
       //console.log('App - getActiveDcmViewersSamePlane - this.dicomViewersActiveSameStudy[i].mprPlane: ', this.dicomViewersActiveSameStudy[i].mprPlane)
-      if (this.dicomViewersActiveSameStudy[i].mprPlane === plane &&
-        this.dicomViewersActiveSameStudy[i].layoutIndex !== this.props.activeDcmIndex)
-        this.dicomViewersActiveSamePlane.push(this.dicomViewersActiveSameStudy[i])
+      if (
+        this.dicomViewersActiveSameStudy[i].mprPlane === plane &&
+        this.dicomViewersActiveSameStudy[i].layoutIndex !==
+          this.props.activeDcmIndex
+      )
+        this.dicomViewersActiveSamePlane.push(
+          this.dicomViewersActiveSameStudy[i]
+        );
     }
     //console.log('App - getActiveDcmViewersSamePlane - this.dicomViewersActiveSamePlane: ', this.dicomViewersActiveSamePlane)
-  }
+  };
 
   syncActiveDcmViewersSamePlane = (direction) => {
-    if (!this.state.visibleSeriesLink) return
+    if (!this.state.visibleSeriesLink) return;
     //console.log('App - this.dicomViewersActiveSamePlane: ', this.dicomViewersActiveSamePlane)
     if (this.dicomViewersActiveSamePlane.length > 0) {
-      const plane = this.dicomViewersRefs[this.props.activeDcmIndex].mprPlane
-      const ippX = getDicomIpp(this.dicomViewersRefs[this.props.activeDcmIndex].image, 0)
-      const ippY = getDicomIpp(this.dicomViewersRefs[this.props.activeDcmIndex].image, 1)
-      const ippZ = getDicomIpp(this.dicomViewersRefs[this.props.activeDcmIndex].image, 2)
+      const plane = this.dicomViewersRefs[this.props.activeDcmIndex].mprPlane;
+      const ippX = getDicomIpp(
+        this.dicomViewersRefs[this.props.activeDcmIndex].image,
+        0
+      );
+      const ippY = getDicomIpp(
+        this.dicomViewersRefs[this.props.activeDcmIndex].image,
+        1
+      );
+      const ippZ = getDicomIpp(
+        this.dicomViewersRefs[this.props.activeDcmIndex].image,
+        2
+      );
 
       //console.log('App - syncActiveDcmViewersSamePlane - plane: ', plane)
       //console.log('App - syncActiveDcmViewersSamePlane - ippX: ', ippX)
       //console.log('App - syncActiveDcmViewersSamePlane - ippY: ', ippY)
       //console.log('App - syncActiveDcmViewersSamePlane - ippZ: ', ippZ)
 
-      let j = 0
+      let j = 0;
       for (let i = 0; i < this.dicomViewersActiveSamePlane.length; i++) {
-        if (plane === 'sagittal')
-          j = this.dicomViewersActiveSamePlane[i].findFirstSliceWithIppValue(ippX, 0)
-        else if (plane === 'coronal')
-          j = this.dicomViewersActiveSamePlane[i].findFirstSliceWithIppValue(ippY, 1)
-        else if (plane === 'axial')
-          j = this.dicomViewersActiveSamePlane[i].findFirstSliceWithIppValue(ippZ, 2)
+        if (plane === "sagittal")
+          j = this.dicomViewersActiveSamePlane[i].findFirstSliceWithIppValue(
+            ippX,
+            0
+          );
+        else if (plane === "coronal")
+          j = this.dicomViewersActiveSamePlane[i].findFirstSliceWithIppValue(
+            ippY,
+            1
+          );
+        else if (plane === "axial")
+          j = this.dicomViewersActiveSamePlane[i].findFirstSliceWithIppValue(
+            ippZ,
+            2
+          );
         //console.log('App - syncActiveDcmViewersSamePlane - j: ', j)
-        if (j >= 0)
-          this.dicomViewersActiveSamePlane[i].runTool('openimage', j)
+        if (j >= 0) this.dicomViewersActiveSamePlane[i].runTool("openimage", j);
       }
     }
-  }
-
+  };
 
   colorIcon = (tool) => {
-    return this.state.toolActive === tool ? activeColor : iconColor
-  }
+    return this.state.toolActive === tool ? activeColor : iconColor;
+  };
 
   render() {
+    const store = this.props;
+
+    let viewMode = store.modeView;
+
+    // const str3dLight =
+    //   viewMode === ModeView.VIEW_3D_LIGHT ? "primary" : "secondary";
     //console.log('App render: ')
 
-    const { classes } = this.props
+    const { classes } = this.props;
 
     // All icon sizes are defined below
-    const primaryClass = { primary: classes.listItemText }
-    const iconSize = '1.3rem'
-    const iconSizeSmall = '1.1rem'
+    const primaryClass = { primary: classes.listItemText };
+    const iconSize = "1.3rem";
+    const iconSizeSmall = "1.1rem";
 
     //const isMultipleView = this.props.layout[0] > 1 || this.props.layout[1] > 1
-    const isOpen = this.props.isOpen[this.props.activeDcmIndex]
-    const isDicomdir = this.props.dicomdir !== null
-    this.isMultipleFiles = false
+    const isOpen = this.props.isOpen[this.props.activeDcmIndex];
+    const isDicomdir = this.props.dicomdir !== null;
+    this.isMultipleFiles = false;
     if (this.dicomViewersRefs[this.props.activeDcmIndex] === undefined) {
-      this.isMultipleFiles = false
+      this.isMultipleFiles = false;
     } else {
       if (this.dicomViewersRefs[this.props.activeDcmIndex].files !== null)
-        this.isMultipleFiles = this.dicomViewersRefs[this.props.activeDcmIndex].files.length > 1
-      else
-        this.isMultipleFiles = false
+        this.isMultipleFiles =
+          this.dicomViewersRefs[this.props.activeDcmIndex].files.length > 1;
+      else this.isMultipleFiles = false;
     }
     //console.log('isMultipleFiles: ', this.isMultipleFiles)
     //const isMultipleView = this.activeDcmViewersNum > 1
 
     // const openMenu = this.state.openMenu
-    const openImageEdit = this.state.openImageEdit
-    const openTools = this.state.openTools
-    const visibleMainMenu = this.state.visibleMainMenu
-    const visibleHeader = this.state.visibleHeader
-    const visibleSettings = this.state.visibleSettings
-    const visibleAbout = this.state.visibleAbout
-    const visibleMeasure = this.state.visibleMeasure
-    const visibleToolbox = this.state.visibleToolbox
-    const visibleDicomdir = this.state.visibleDicomdir
-    const visibleFileManager = this.state.visibleFileManager
-    const visibleClearMeasureDlg = this.state.visibleClearMeasureDlg
-    const visibleZippedFileDlg = this.state.visibleZippedFileDlg
-    const visibleDownloadZipDlg = this.state.visibleDownloadZipDlg
-    const visibleOpenMultipleFilesDlg = this.state.visibleOpenMultipleFilesDlg
-    const visibleLayout = Boolean(this.state.anchorElLayout)
-    const visibleVolumeBuilding = this.state.visibleVolumeBuilding
-    const visibleMpr3D = this.state.visibleMpr3D // disabled b4
-    const visibleMprOrthogonal = this.state.visibleMprOrthogonal
-    const visibleMprCoronal = this.state.visibleMprCoronal
-    const visibleMprSagittal = this.state.visibleMprSagittal
-    const visibleMprAxial = this.state.visibleMprAxial
-    const visibleExplorer = this.state.visibleExplorer
-    const visibleReferenceLines = this.state.visibleReferenceLines
-    const visibleSeriesLink = this.state.visibleSeriesLink
-    const visibleToolsPanel = Boolean(this.state.anchorElToolsPanel)
-    const mprMenu = this.state.mprMenu && this.mprPlane !== '' //  && isMultipleFiles
+    const openImageEdit = this.state.openImageEdit;
+    const openTools = this.state.openTools;
+    const visibleMainMenu = this.state.visibleMainMenu;
+    const visibleHeader = this.state.visibleHeader;
+    const visibleSettings = this.state.visibleSettings;
+    const visibleAbout = this.state.visibleAbout;
+    const visibleMeasure = this.state.visibleMeasure;
+    const visibleToolbox = this.state.visibleToolbox;
+    const visibleDicomdir = this.state.visibleDicomdir;
+    const visibleFileManager = this.state.visibleFileManager;
+    const visibleClearMeasureDlg = this.state.visibleClearMeasureDlg;
+    const visibleZippedFileDlg = this.state.visibleZippedFileDlg;
+    const visibleDownloadZipDlg = this.state.visibleDownloadZipDlg;
+    const visibleOpenMultipleFilesDlg = this.state.visibleOpenMultipleFilesDlg;
+    const visibleLayout = Boolean(this.state.anchorElLayout);
+    const visibleVolumeBuilding = this.state.visibleVolumeBuilding;
+    const visibleMpr3D = this.state.visibleMpr3D; // disabled b4
+    const visibleMprOrthogonal = this.state.visibleMprOrthogonal;
+    const visibleMprCoronal = this.state.visibleMprCoronal;
+    const visibleMprSagittal = this.state.visibleMprSagittal;
+    const visibleMprAxial = this.state.visibleMprAxial;
+    const visibleExplorer = this.state.visibleExplorer;
+    const visibleReferenceLines = this.state.visibleReferenceLines;
+    const visibleSeriesLink = this.state.visibleSeriesLink;
+    const visibleToolsPanel = Boolean(this.state.anchorElToolsPanel);
+    const mprMenu = this.state.mprMenu && this.mprPlane !== ""; //  && isMultipleFiles
 
     //let iconToolColor = this.state.toolState === 1 ? '#FFFFFF' : '#999999'
 
-    const dcmViewer = this.getActiveDcmViewer()
+    const dcmViewer = this.getActiveDcmViewer();
 
-    const sliceMax = this.state.sliceMax
-
-
+    const sliceMax = this.state.sliceMax;
 
     return (
       <div>
-        
-        <AppBar className={classes.appBar} style={{ backgroundColor: '#00002f' }} position='static' elevation={0}>
-          <Toolbar variant="dense" >
-            <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={this.toggleMainMenu}>
+        <AppBar
+          className={classes.appBar}
+          style={{ backgroundColor: "#00002f" }}
+          position="static"
+          elevation={0}
+        >
+          <Toolbar variant="dense">
+            <IconButton
+              edge="start"
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="menu"
+              onClick={this.toggleMainMenu}
+            >
               <MenuIcon />
             </IconButton>
             {this.appBarTitle(classes, isOpen, dcmViewer)}
@@ -1875,10 +2109,13 @@ class App extends PureComponent {
             <div className={classes.grow} />
             {!isOpen && !isDicomdir ? (
               <IconButton onClick={this.showAbout}>
-                <Icon path={mdiInformationOutline} size={iconSize} color={iconColor} />
+                <Icon
+                  path={mdiInformationOutline}
+                  size={iconSize}
+                  color={iconColor}
+                />
               </IconButton>
-            ) : null
-            }
+            ) : null}
             {/*    
             { iconTool !== null && this.props.tool !== null &&  isOpen ? (
                 <IconButton onClick={this.toolChange}>
@@ -1893,32 +2130,28 @@ class App extends PureComponent {
                   <Icon path={mdiVideo} size={iconSize} color={iconColor} />
                 </IconButton>
               </Tooltip>
-            ) : null
-            }
+            ) : null}
             {isOpen ? (
               <Tooltip title="Reset Image">
                 <IconButton onClick={this.resetImage}>
                   <Icon path={mdiRefresh} size={iconSize} color={iconColor} />
                 </IconButton>
               </Tooltip>
-            ) : null
-            }
+            ) : null}
             {isOpen ? (
               <Tooltip title="Tools">
                 <IconButton onClick={this.handleToolsPanel}>
                   <Icon path={mdiTools} size={iconSize} color={iconColor} />
                 </IconButton>
               </Tooltip>
-            ) : null
-            }
+            ) : null}
             {isOpen ? (
               <Tooltip title="Save Screenshot">
                 <IconButton color="inherit" onClick={this.saveShot}>
                   <Icon path={mdiCamera} size={iconSize} color={iconColor} />
                 </IconButton>
               </Tooltip>
-            ) : null
-            }
+            ) : null}
             {/* isOpen ? (
               <Tooltip title="Toolbox">
                 <IconButton color="inherit" onClick={this.toggleToolbox}>
@@ -1933,221 +2166,441 @@ class App extends PureComponent {
                   <Icon path={mdiFileCad} size={iconSize} color={iconColor} />
                 </IconButton>
               </Tooltip>
-            ) : null
-            }
+            ) : null}
             {isOpen && dcmViewer.isDicom ? (
               <Tooltip title="Dicom Header">
                 <IconButton color="inherit" onClick={this.toggleHeader}>
-                  <Icon path={mdiFileDocument} size={iconSize} color={iconColor} />
+                  <Icon
+                    path={mdiFileDocument}
+                    size={iconSize}
+                    color={iconColor}
+                  />
                 </IconButton>
               </Tooltip>
-            ) : null
-            }
+            ) : null}
             {isDicomdir ? (
               <Tooltip title="DICOMDIR">
                 <IconButton color="inherit" onClick={this.toggleDicomdir}>
-                  <Icon path={mdiFolderOpen} size={iconSize} color={iconColor} />
+                  <Icon
+                    path={mdiFolderOpen}
+                    size={iconSize}
+                    color={iconColor}
+                  />
                 </IconButton>
               </Tooltip>
-            ) : null
-            }
+            ) : null}
             {(isOpen && this.isMultipleFiles) || visibleMprOrthogonal ? (
               <Tooltip title="Explorer">
                 <IconButton color="inherit" onClick={this.toggleExplorer}>
-                  <Icon path={mdiAnimationOutline} size={iconSize} color={iconColor} />
-                 
+                  <Icon
+                    path={mdiAnimationOutline}
+                    size={iconSize}
+                    color={iconColor}
+                  />
                 </IconButton>
               </Tooltip>
-            ) : null
-            }
+            ) : null}
             {isOpen ? (
               <Tooltip title="Sandbox File Manager">
                 <IconButton color="inherit" onClick={this.toggleFileManager}>
-                  <Icon path={mdiFileCabinet} size={iconSize} color={iconColor} />
+                  <Icon
+                    path={mdiFileCabinet}
+                    size={iconSize}
+                    color={iconColor}
+                  />
                 </IconButton>
               </Tooltip>
-            ) : null
-            }
+            ) : null}
           </Toolbar>
         </AppBar>
-        <Drawer 
-        // Drawer on the left Start
+        <Drawer
+          // Drawer on the left Start
           variant="persistent"
           open={visibleMainMenu}
-          style={{ position: 'relative', zIndex: 1}}
+          style={{ position: "relative", zIndex: 1 }}
           onClose={this.toggleMainMenu}
-         
-
         >
-          <div style={{ backgroundColor: '#00002f'  }} className={classes.toolbar} >
-            <PerfectScrollbar  >
+          <div
+            style={{ backgroundColor: "#00002f" }}
+            className={classes.toolbar}
+          >
+            <PerfectScrollbar>
               <List dense={true}>
                 {/* <ListItem button onClick={() => this.showAppBar()}>
                   <ListItemIcon><MenuIcon /></ListItemIcon>
                   <ListItemText primary='Tool Bar' />
                 </ListItem> */}
-                <ListItem style={{ paddingTop: 50 }} button onClick={() => this.toggleFileManager()}>
-                  <ListItemIcon ><Icon path={mdiFileCabinet} size={iconSize} color={iconColor} /></ListItemIcon>
-                  <ListItemText classes={primaryClass} primary='File Explorer' />
+                <ListItem
+                  style={{ paddingTop: 50 }}
+                  button
+                  onClick={() => this.toggleFileManager()}
+                >
+                  <ListItemIcon>
+                    <Icon
+                      path={mdiFileCabinet}
+                      size={iconSize}
+                      color={iconColor}
+                    />
+                  </ListItemIcon>
+                  <ListItemText
+                    classes={primaryClass}
+                    primary="File Explorer"
+                  />
                 </ListItem>
 
-              
-                 
-               
-                  <List dense={true} component="div">
-                    <ListItem button style={{ paddingLeft: 30 }} onClick={() => this.showFileOpen()}>
-                      <ListItemIcon><Icon path={mdiFolder} size={'1.0rem'} color={iconColor} /></ListItemIcon>
-                      <ListItemText classes={primaryClass}
-                        primary={
-                          <Typography type="body1" style={{ fontSize: '0.80em', marginLeft: '-20px' }}>Upload File</Typography>
-                        } />
-                        
-                       
-                    </ListItem>
+                <List dense={true} component="div">
+                  <ListItem
+                    button
+                    style={{ paddingLeft: 30 }}
+                    onClick={() => this.showFileOpen()}
+                  >
+                    <ListItemIcon>
+                      <Icon
+                        path={mdiFolder}
+                        size={"1.0rem"}
+                        color={iconColor}
+                      />
+                    </ListItemIcon>
+                    <ListItemText
+                      classes={primaryClass}
+                      primary={
+                        <Typography
+                          type="body1"
+                          style={{ fontSize: "0.80em", marginLeft: "-20px" }}
+                        >
+                          Upload File
+                        </Typography>
+                      }
+                    />
+                  </ListItem>
 
-                    {/* <UiOpenMenu fileNameOnLoad={this.m_fileNameOnLoad} /> */}
-                    <ListItem button style={{ paddingLeft: 30 }} onClick={() => this.showOpenUrl()}>
-                      <ListItemIcon><Icon path={mdiWeb} size={'1.0rem'} color={iconColor} /></ListItemIcon>
-                      <ListItemText classes={primaryClass}
+                  {/* <UiOpenMenu fileNameOnLoad={this.m_fileNameOnLoad} /> */}
+                  <ListItem
+                    button
+                    style={{ paddingLeft: 30 }}
+                    onClick={() => this.showOpenUrl()}
+                  >
+                    <ListItemIcon>
+                      <Icon path={mdiWeb} size={"1.0rem"} color={iconColor} />
+                    </ListItemIcon>
+                    <ListItemText
+                      classes={primaryClass}
+                      primary={
+                        <Typography
+                          type="body1"
+                          style={{ fontSize: "0.80em", marginLeft: "-20px" }}
+                        >
+                          URL
+                        </Typography>
+                      }
+                    />
+                  </ListItem>
+                  {isInputDirSupported() && !isMobile ? (
+                    <ListItem
+                      button
+                      style={{ paddingLeft: 30 }}
+                      onClick={() => this.showOpenFolder()}
+                    >
+                      <ListItemIcon>
+                        <Icon
+                          path={mdiFolderOpen}
+                          size={"1.0rem"}
+                          color={iconColor}
+                        />
+                      </ListItemIcon>
+                      <ListItemText
+                        classes={primaryClass}
                         primary={
-                          <Typography type="body1" style={{ fontSize: '0.80em', marginLeft: '-20px' }}>URL</Typography>
-                        } />
+                          <Typography
+                            type="body1"
+                            style={{ fontSize: "0.80em", marginLeft: "-20px" }}
+                          >
+                            Folder
+                          </Typography>
+                        }
+                      />
                     </ListItem>
-                    {isInputDirSupported() && !isMobile ?
-                      <ListItem button style={{ paddingLeft: 30 }} onClick={() => this.showOpenFolder()}>
-                        <ListItemIcon><Icon path={mdiFolderOpen} size={'1.0rem'} color={iconColor} /></ListItemIcon>
-                        <ListItemText classes={primaryClass}
-                          primary={
-                            <Typography type="body1" style={{ fontSize: '0.80em', marginLeft: '-20px' }}>Folder</Typography>
-                          } />
-                      </ListItem>
-                      : null}
-                    {isInputDirSupported() && !isMobile ?
-                      <ListItem button style={{ paddingLeft: 30 }} onClick={() => this.showOpenDicomdir()}>
-                        <ListItemIcon><Icon path={mdiFolderOpen} size={'1.0rem'} color={iconColor} /></ListItemIcon>
-                        <ListItemText classes={primaryClass}
-                          primary={
-                            <Typography type="body1" style={{ fontSize: '0.80em', marginLeft: '-20px' }}>DICOMDIR</Typography>
-                          } />
-                      </ListItem>
-                      : null}
-                  </List>
-               
-
-                {/* **List Items Starts below** */}
-                {/* Give styling to individial ListItem to modify */}
+                  ) : null}
+                  {isInputDirSupported() && !isMobile ? (
+                    <ListItem
+                      button
+                      style={{ paddingLeft: 30 }}
+                      onClick={() => this.showOpenDicomdir()}
+                    >
+                      <ListItemIcon>
+                        <Icon
+                          path={mdiFolderOpen}
+                          size={"1.0rem"}
+                          color={iconColor}
+                        />
+                      </ListItemIcon>
+                      <ListItemText
+                        classes={primaryClass}
+                        primary={
+                          <Typography
+                            type="body1"
+                            style={{ fontSize: "0.80em", marginLeft: "-20px" }}
+                          >
+                            DICOMDIR
+                          </Typography>
+                        }
+                      />
+                    </ListItem>
+                  ) : null}
+                </List>
+                {/* <Router>
+                  <Link to="/src/demo/ui/UiApp.js" target="_blank"> */}
+                    <Button style={{marginLeft: '10px'}} onClick={()=> window.open("https://3drendering.netlify.app/", "_blank")}>3D Rendering</Button>
+                  {/* </Link>{" "}
+                </Router> */}
                 <ListItem button onClick={() => this.clear()}>
                   <ListItemIcon>
                     <Icon path={mdiDelete} size={iconSize} color={iconColor} />
-
                   </ListItemIcon>
 
-
-                  <ListItemText classes={primaryClass} primary='Clear All' />
+                  <ListItemText classes={primaryClass} primary="Clear All" />
                 </ListItem>
                 <ListItem button onClick={this.handleLayout}>
                   <ListItemIcon>
-                    <Icon path={mdiViewGridPlusOutline} size={iconSize} color={iconColor} />
+                    <Icon
+                      path={mdiViewGridPlusOutline}
+                      size={iconSize}
+                      color={iconColor}
+                    />
                   </ListItemIcon>
-                  <ListItemText classes={primaryClass} primary='Layout' />
+                  <ListItemText classes={primaryClass} primary="Layout" />
                 </ListItem>
                 <ListItem button onClick={() => this.showSettings()}>
-
-                  <ListItemIcon><Icon path={mdiCog} size={iconSize} color={iconColor} /></ListItemIcon>
-                  <ListItemText classes={primaryClass} primary='Settings' />
+                  <ListItemIcon>
+                    <Icon path={mdiCog} size={iconSize} color={iconColor} />
+                  </ListItemIcon>
+                  <ListItemText classes={primaryClass} primary="Settings" />
                 </ListItem>
                 <Divider />
-                <ListItem button onClick={() => this.toggleToolbox()} disabled={!isOpen}>
-                  <ListItemIcon><Icon path={mdiChartHistogram} size={iconSize} color={iconColor} /></ListItemIcon>
-                  <ListItemText classes={primaryClass} primary='Histogram' />
+                <ListItem
+                  button
+                  onClick={() => this.toggleToolbox()}
+                  disabled={!isOpen}
+                >
+                  <ListItemIcon>
+                    <Icon
+                      path={mdiChartHistogram}
+                      size={iconSize}
+                      color={iconColor}
+                    />
+                  </ListItemIcon>
+                  <ListItemText classes={primaryClass} primary="Histogram" />
                 </ListItem>
-                <ListItem button onClick={() => this.toggleMpr()} disabled={!isOpen || this.mprPlane === ''} >
-                  <ListItemIcon><Icon path={mdiAxisArrow} size={iconSize} color={iconColor} /></ListItemIcon>
-                  <ListItemText classes={primaryClass} primary='MPR' />
+                <ListItem
+                  button
+                  onClick={() => this.toggleMpr()}
+                  disabled={!isOpen || this.mprPlane === ""}
+                >
+                  <ListItemIcon>
+                    <Icon
+                      path={mdiAxisArrow}
+                      size={iconSize}
+                      color={iconColor}
+                    />
+                  </ListItemIcon>
+                  <ListItemText classes={primaryClass} primary="MPR" />
                   {mprMenu ? <ExpandLess /> : <ExpandMore />}
                 </ListItem>
 
                 <Collapse in={mprMenu} timeout="auto" unmountOnExit>
                   <List dense={true} component="div">
-              {/* Disabled b4 */}      
-                  <ListItem button style={{paddingLeft: 40}} onClick={() => this.mpr3D()}>
-                    {visibleMpr3D ? <ListItemIcon style={{marginLeft: '-10px'}}><Icon path={mdiCheck} size={'1.0rem'} color={iconColor} /></ListItemIcon> : null}
-                    <ListItemText 
-                      style={visibleMpr3D ? {marginLeft: '-7px'} : {marginLeft: '40px'}}
-                      primary={
-                        <Typography type="body1" style={{fontSize: '0.80em', marginLeft: '-23px'}}>3D Render</Typography>
-                      } />
-                       {/* <Graphics3d/> */}
-                  </ListItem>
-{/* Disabled b4 */}
-                    <ListItem button style={{ paddingLeft: 40 }} onClick={() => this.mprOrthogonal()}>
-                      {visibleMprOrthogonal ? <ListItemIcon style={{ marginLeft: '-10px' }}><Icon path={mdiCheck} size={'1.0rem'} color={iconColor} /></ListItemIcon> : null}
-                      <ListItemText
-                        style={visibleMprOrthogonal ? { marginLeft: '-7px' } : { marginLeft: '40px' }}
-                        primary={
-                          <Typography type="body1" style={{ fontSize: '0.80em', marginLeft: '-23px' }}>Orthogonal</Typography>
-                        } />
-                    </ListItem>
-                    <ListItem button style={{ paddingLeft: 40 }} onClick={() => this.mprCoronal()}>
-                      {visibleMprCoronal ? <ListItemIcon style={{ marginLeft: '-10px' }}><Icon path={mdiCheck} size={'1.0rem'} color={iconColor} /></ListItemIcon> : null}
-                      <ListItemText
-                        style={visibleMprCoronal ? { marginLeft: '-7px' } : { marginLeft: '40px' }}
-                        primary={
-                          <Typography type="body1" style={{ fontSize: '0.80em', marginLeft: '-23px' }}>Coronal</Typography>
-                        } />
-                    </ListItem>
-                    <ListItem button style={{ paddingLeft: 40 }} onClick={() => this.mprSagittal()}>
-                      {visibleMprSagittal ? <ListItemIcon style={{ marginLeft: '-10px' }}><Icon path={mdiCheck} size={'1.0rem'} color={iconColor} /></ListItemIcon> : null}
-                      <ListItemText
-                        style={visibleMprSagittal ? { marginLeft: '-7px' } : { marginLeft: '40px' }}
-                        primary={
-                          <Typography type="body1" style={{ fontSize: '0.80em', marginLeft: '-23px' }}>Sagittal</Typography>
-                        } />
-                    </ListItem>
-                    <ListItem button style={{ paddingLeft: 40 }} onClick={() => this.mprAxial()}>
-                      {visibleMprAxial ? <ListItemIcon style={{ marginLeft: '-10px' }}><Icon path={mdiCheck} size={'1.0rem'} color={iconColor} /></ListItemIcon> : null}
-                      <ListItemText
-                        style={visibleMprAxial ? { marginLeft: '-7px' } : { marginLeft: '40px' }}
-                        primary={
-                          <Typography type="body1" style={{ fontSize: '0.80em', marginLeft: '-23px' }}>Axial</Typography>
-                        } />
-                    </ListItem>
-                  </List>
-                </Collapse>
+                    {/* Disabled b4 */}
 
-                <ListItem button onClick={() => this.toggleImageEdit()} disabled={!isOpen}>
-                  <ListItemIcon><Icon path={mdiImageEdit} size={iconSize} color={iconColor} /></ListItemIcon>
-                  <ListItemText classes={primaryClass} primary='Edit' />
-                  {openImageEdit ? <ExpandLess /> : <ExpandMore />}
-                </ListItem>
-                <Collapse in={openImageEdit} timeout="auto" unmountOnExit>
-                           
-                                 <List dense={true} component="div"  > 
-               
- <InvertHoverComponent className='invertIcon' style={{ marginLeft: 30 }} onClick={() => this.toolExecute('Invert')} />
-                
-                              
-                             
+                    {/* Disabled b4 */}
 
-                  </List>
-                 
-                </Collapse>
-                <ListItem button onClick={() => this.toggleTools()} disabled={!isOpen}>
-                  <ListItemIcon><Icon path={mdiTools} size={iconSize} color={iconColor} /></ListItemIcon>
-                  <ListItemText classes={primaryClass} primary='Tools' />
-                  {openTools ? <ExpandLess /> : <ExpandMore />}
-                </ListItem> 
-                 <Collapse in={openTools} timeout="auto" unmountOnExit>
-                  <List dense={true} component="div" disabled={!isOpen} >
-                    <ListItem button style={{ paddingLeft: 30 }} onClick={() => this.toolExecute('notool')} disabled={!isOpen}>
-                      <ListItemIcon><Icon path={mdiCursorDefault} size={iconSizeSmall} color={this.colorIcon('notool')} /></ListItemIcon>
-                      <ListItemText classes={primaryClass}
+                    <ListItem
+                      button
+                      style={{ paddingLeft: 40 }}
+                      onClick={() => this.mprOrthogonal()}
+                    >
+                      {visibleMprOrthogonal ? (
+                        <ListItemIcon style={{ marginLeft: "-10px" }}>
+                          <Icon
+                            path={mdiCheck}
+                            size={"1.0rem"}
+                            color={iconColor}
+                          />
+                        </ListItemIcon>
+                      ) : null}
+                      <ListItemText
+                        style={
+                          visibleMprOrthogonal
+                            ? { marginLeft: "-7px" }
+                            : { marginLeft: "40px" }
+                        }
                         primary={
-                          <Typography type="body1" style={{ fontSize: '0.80em', marginLeft: '-23px' }}>No Tool</Typography>
+                          <Typography
+                            type="body1"
+                            style={{ fontSize: "0.80em", marginLeft: "-23px" }}
+                          >
+                            Orthogonal
+                          </Typography>
                         }
                       />
                     </ListItem>
-  
+                    <ListItem
+                      button
+                      style={{ paddingLeft: 40 }}
+                      onClick={() => this.mprCoronal()}
+                    >
+                      {visibleMprCoronal ? (
+                        <ListItemIcon style={{ marginLeft: "-10px" }}>
+                          <Icon
+                            path={mdiCheck}
+                            size={"1.0rem"}
+                            color={iconColor}
+                          />
+                        </ListItemIcon>
+                      ) : null}
+                      <ListItemText
+                        style={
+                          visibleMprCoronal
+                            ? { marginLeft: "-7px" }
+                            : { marginLeft: "40px" }
+                        }
+                        primary={
+                          <Typography
+                            type="body1"
+                            style={{ fontSize: "0.80em", marginLeft: "-23px" }}
+                          >
+                            Coronal
+                          </Typography>
+                        }
+                      />
+                    </ListItem>
+                    <ListItem
+                      button
+                      style={{ paddingLeft: 40 }}
+                      onClick={() => this.mprSagittal()}
+                    >
+                      {visibleMprSagittal ? (
+                        <ListItemIcon style={{ marginLeft: "-10px" }}>
+                          <Icon
+                            path={mdiCheck}
+                            size={"1.0rem"}
+                            color={iconColor}
+                          />
+                        </ListItemIcon>
+                      ) : null}
+                      <ListItemText
+                        style={
+                          visibleMprSagittal
+                            ? { marginLeft: "-7px" }
+                            : { marginLeft: "40px" }
+                        }
+                        primary={
+                          <Typography
+                            type="body1"
+                            style={{ fontSize: "0.80em", marginLeft: "-23px" }}
+                          >
+                            Sagittal
+                          </Typography>
+                        }
+                      />
+                    </ListItem>
+                    <ListItem
+                      button
+                      style={{ paddingLeft: 40 }}
+                      onClick={() => this.mprAxial()}
+                    >
+                      {visibleMprAxial ? (
+                        <ListItemIcon style={{ marginLeft: "-10px" }}>
+                          <Icon
+                            path={mdiCheck}
+                            size={"1.0rem"}
+                            color={iconColor}
+                          />
+                        </ListItemIcon>
+                      ) : null}
+                      <ListItemText
+                        style={
+                          visibleMprAxial
+                            ? { marginLeft: "-7px" }
+                            : { marginLeft: "40px" }
+                        }
+                        primary={
+                          <Typography
+                            type="body1"
+                            style={{ fontSize: "0.80em", marginLeft: "-23px" }}
+                          >
+                            Axial
+                          </Typography>
+                        }
+                      />
+                    </ListItem>
+                  </List>
+                </Collapse>
+
+                <ListItem
+                  button
+                  onClick={() => this.toggleImageEdit()}
+                  disabled={!isOpen}
+                >
+                  <ListItemIcon>
+                    <Icon
+                      path={mdiImageEdit}
+                      size={iconSize}
+                      color={iconColor}
+                    />
+                  </ListItemIcon>
+                  <ListItemText classes={primaryClass} primary="Edit" />
+                  {openImageEdit ? <ExpandLess /> : <ExpandMore />}
+                </ListItem>
+                <Collapse in={openImageEdit} timeout="auto" unmountOnExit>
+                  <List dense={true} component="div">
+                    <InvertHoverComponent
+                      className="invertIcon"
+                      style={{ marginLeft: 30 }}
+                      onClick={() => this.toolExecute("Invert")}
+                    />
+
+                    {/* <ViewMode/> */}
+                  </List>
+                </Collapse>
+                <ListItem
+                  button
+                  onClick={() => this.toggleTools()}
+                  disabled={!isOpen}
+                >
+                  <ListItemIcon>
+                    <Icon path={mdiTools} size={iconSize} color={iconColor} />
+                  </ListItemIcon>
+                  <ListItemText classes={primaryClass} primary="Tools" />
+                  {openTools ? <ExpandLess /> : <ExpandMore />}
+                </ListItem>
+                <Collapse in={openTools} timeout="auto" unmountOnExit>
+                  <List dense={true} component="div" disabled={!isOpen}>
+                    <ListItem
+                      button
+                      style={{ paddingLeft: 30 }}
+                      onClick={() => this.toolExecute("notool")}
+                      disabled={!isOpen}
+                    >
+                      <ListItemIcon>
+                        <Icon
+                          path={mdiCursorDefault}
+                          size={iconSizeSmall}
+                          color={this.colorIcon("notool")}
+                        />
+                      </ListItemIcon>
+                      <ListItemText
+                        classes={primaryClass}
+                        primary={
+                          <Typography
+                            type="body1"
+                            style={{ fontSize: "0.80em", marginLeft: "-23px" }}
+                          >
+                            No Tool
+                          </Typography>
+                        }
+                      />
+                    </ListItem>
+
                     {/* <ListItem button style={{ paddingLeft: 30 }} onClick={() => this.toolExecute('referencelines')} disabled={!isOpen}>
                       <ListItemIcon><Icon path={mdiArrowSplitHorizontal} size={iconSizeSmall} color={visibleReferenceLines ? activeColor : iconColor} /></ListItemIcon>
                       <ListItemText classes={primaryClass}
@@ -2173,66 +2626,148 @@ class App extends PureComponent {
                       />
                     </ListItem> */}
 
-                    <PanHoverComponent className='invertIcon' style={{ marginLeft: 15 }} onClick={() => this.toolExecute('Pan')} disabled={!isOpen} />
+                    <PanHoverComponent
+                      className="invertIcon"
+                      style={{ marginLeft: 15 }}
+                      onClick={() => this.toolExecute("Pan")}
+                      disabled={!isOpen}
+                    />
 
                     {/* Zoom Component */}
 
-                    <ZoomHoverComponent className='invertIcon' style={{ marginLeft: 15 }} onClick={() => this.toolExecute('Zoom')} disabled={!isOpen} />
+                    <ZoomHoverComponent
+                      className="invertIcon"
+                      style={{ marginLeft: 15 }}
+                      onClick={() => this.toolExecute("Zoom")}
+                      disabled={!isOpen}
+                    />
 
                     {/* Magnify Component */}
-                    <MagnifyHoverComponent className='invertIcon' style={{ marginLeft: 15, marginRight: 15 }} onClick={() => this.toolExecute('Magnify')} disabled={!isOpen} />
-
+                    <MagnifyHoverComponent
+                      className="invertIcon"
+                      style={{ marginLeft: 15, marginRight: 15 }}
+                      onClick={() => this.toolExecute("Magnify")}
+                      disabled={!isOpen}
+                    />
 
                     {/* Length Component */}
-                    <br /><br />
-                    <LengthComponent className='invertIcon' style={{ marginLeft: 15 }} onClick={() => this.toolExecute('Length')} disabled={!isOpen} />
-
+                    <br />
+                    <br />
+                    <LengthComponent
+                      className="invertIcon"
+                      style={{ marginLeft: 15 }}
+                      onClick={() => this.toolExecute("Length")}
+                      disabled={!isOpen}
+                    />
 
                     {/* Probe/Mark Component */}
-                    <MarkComponent className='invertIcon' style={{ marginLeft: 15 }} onClick={() => this.toolExecute('Probe')} disabled={!isOpen} />
+                    <MarkComponent
+                      className="invertIcon"
+                      style={{ marginLeft: 15 }}
+                      onClick={() => this.toolExecute("Probe")}
+                      disabled={!isOpen}
+                    />
 
                     {/* Angle Component */}
-                    <AngleComponent className='invertIcon' style={{ paddingLeft: 15 }} onClick={() => this.toolExecute('Angle')} disabled={!isOpen} />
-                    <br /><br />
+                    <AngleComponent
+                      className="invertIcon"
+                      style={{ paddingLeft: 15 }}
+                      onClick={() => this.toolExecute("Angle")}
+                      disabled={!isOpen}
+                    />
+                    <br />
+                    <br />
                     {/* Circle Component */}
-                    <CircleComponent className='invertIcon' style={{ marginLeft: 15 }} onClick={() => this.toolExecute('EllipticalRoi')} disabled={!isOpen} />
+                    <CircleComponent
+                      className="invertIcon"
+                      style={{ marginLeft: 15 }}
+                      onClick={() => this.toolExecute("EllipticalRoi")}
+                      disabled={!isOpen}
+                    />
                     {/* Rectangle Component */}
-                    <RectComponent className='invertIcon' style={{ marginLeft: 15 }} onClick={() => this.toolExecute('RectangleRoi')} disabled={!isOpen} />
+                    <RectComponent
+                      className="invertIcon"
+                      style={{ marginLeft: 15 }}
+                      onClick={() => this.toolExecute("RectangleRoi")}
+                      disabled={!isOpen}
+                    />
 
                     {/* FreeHandRoi Component */}
-                    < FreehandComponent className='invertIcon' style={{ marginLeft: 15 }} onClick={() => this.toolExecute('FreehandRoi')} disabled={!isOpen} />
-
+                    <FreehandComponent
+                      className="invertIcon"
+                      style={{ marginLeft: 15 }}
+                      onClick={() => this.toolExecute("FreehandRoi")}
+                      disabled={!isOpen}
+                    />
                   </List>
                 </Collapse>
-
               </List>
 
-              {this.isMultipleFiles || mprMenu ?
+              {this.isMultipleFiles || mprMenu ? (
                 <div>
                   <Divider />
-                  <div align='center'>
-                    <IconButton onClick={this.listOpenFilesFirstFrame} size='small'>
-                      <Icon path={mdiSkipBackward} size={'1.0rem'} color={iconColor} />
+                  <div align="center">
+                    <IconButton
+                      onClick={this.listOpenFilesFirstFrame}
+                      size="small"
+                    >
+                      <Icon
+                        path={mdiSkipBackward}
+                        size={"1.0rem"}
+                        color={iconColor}
+                      />
                     </IconButton>
-                    <IconButton onClick={this.listOpenFilesPreviousFrame} size='small'>
-                      <Icon path={mdiSkipPrevious} size={'1.0rem'} color={iconColor} />
+                    <IconButton
+                      onClick={this.listOpenFilesPreviousFrame}
+                      size="small"
+                    >
+                      <Icon
+                        path={mdiSkipPrevious}
+                        size={"1.0rem"}
+                        color={iconColor}
+                      />
                     </IconButton>
-                    <IconButton onClick={this.listOpenFilesScrolling} size='small'>
-                      <Icon path={this.state.listOpenFilesScrolling ? mdiPause : mdiPlay} size={'1.0rem'} color={iconColor} />
+                    <IconButton
+                      onClick={this.listOpenFilesScrolling}
+                      size="small"
+                    >
+                      <Icon
+                        path={
+                          this.state.listOpenFilesScrolling ? mdiPause : mdiPlay
+                        }
+                        size={"1.0rem"}
+                        color={iconColor}
+                      />
                     </IconButton>
-                    <IconButton onClick={this.listOpenFilesNextFrame} size='small'>
-                      <Icon path={mdiSkipNext} size={'1.0rem'} color={iconColor} />
+                    <IconButton
+                      onClick={this.listOpenFilesNextFrame}
+                      size="small"
+                    >
+                      <Icon
+                        path={mdiSkipNext}
+                        size={"1.0rem"}
+                        color={iconColor}
+                      />
                     </IconButton>
-                    <IconButton onClick={this.listOpenFilesLastFrame} size='small'>
-                      <Icon path={mdiSkipForward} size={'1.0rem'} color={iconColor} />
+                    <IconButton
+                      onClick={this.listOpenFilesLastFrame}
+                      size="small"
+                    >
+                      <Icon
+                        path={mdiSkipForward}
+                        size={"1.0rem"}
+                        color={iconColor}
+                      />
                     </IconButton>
                   </div>
-                  <div style={{ textAlign: 'center' }}>
-                    <Typography type="body1" style={{ fontSize: '0.80em' }}>{`${this.state.sliceIndex + 1} / ${sliceMax}`}</Typography>
+                  <div style={{ textAlign: "center" }}>
+                    <Typography type="body1" style={{ fontSize: "0.80em" }}>{`${
+                      this.state.sliceIndex + 1
+                    } / ${sliceMax}`}</Typography>
                   </div>
-                  <div style={{ width: '130px', margin: 'auto' }}>
+                  <div style={{ width: "130px", margin: "auto" }}>
                     <Slider
-                      style={{ marginTop: '-4px' }}
+                      style={{ marginTop: "-4px" }}
                       value={this.state.sliceIndex}
                       onChange={this.handleSliceChange}
                       color="secondary"
@@ -2241,31 +2776,40 @@ class App extends PureComponent {
                       step={100 / sliceMax}
                     />
                   </div>
-                </div> : null
-              }
-
+                </div>
+              ) : null}
             </PerfectScrollbar>
           </div>
           {/* End of left Drawer */}
         </Drawer>
 
         <Drawer
-  //  -------------------------------- Drawer on the Right Side for AI Models Integration -----------------------------------------------
+          //  -------------------------------- Drawer on the Right Side for AI Models Integration -----------------------------------------------
           variant="persistent"
           open={visibleMainMenu}
-          style={{ position: 'relative', zIndex: 1 }}
-         onClose={this.toggleMainMenu}
-          anchor='right'
-        
-
+          style={{ position: "relative", zIndex: 1 }}
+          onClose={this.toggleMainMenu}
+          anchor="right"
         >
-          <div style={{ backgroundColor: '#00002f' }} className={classes.toolbar} >
-             <PerfectScrollbar  >
+          <div
+            style={{ backgroundColor: "#00002f" }}
+            className={classes.toolbar}
+          >
+            <PerfectScrollbar>
               <List dense={true}>
-               
-                <ListItem style={{ paddingTop: 50 }} button onClick={() => this.toggleFileManager()}>
-                  <ListItemIcon ><Icon path={mdiFileCabinet} size={iconSize} color={iconColor} /></ListItemIcon>
-                  <ListItemText classes={primaryClass} primary='AI Models' />
+                <ListItem
+                  style={{ paddingTop: 50 }}
+                  button
+                  onClick={() => this.toggleFileManager()}
+                >
+                  <ListItemIcon>
+                    <Icon
+                      path={mdiFileCabinet}
+                      size={iconSize}
+                      color={iconColor}
+                    />
+                  </ListItemIcon>
+                  <ListItemText classes={primaryClass} primary="AI Models" />
                 </ListItem>
 
                 {/* <ListItem button onClick={() => this.toggleOpenMenu()}>
@@ -2273,8 +2817,8 @@ class App extends PureComponent {
                   <ListItemText classes={primaryClass} primary='...' />
                   {/* {openMenu ? <ExpandLess /> : <ExpandMore />} */}
                 {/* </ListItem> */}
-               
-                  {/* <List dense={true} component="div">
+
+                {/* <List dense={true} component="div">
                     <ListItem button style={{ paddingLeft: 30 }} onClick={() => this.showFileOpen()}>
                       <ListItemIcon><Icon path={mdiFolder} size={'1.0rem'} color={iconColor} /></ListItemIcon>
                       <ListItemText classes={primaryClass}
@@ -2293,62 +2837,80 @@ class App extends PureComponent {
                    
                     </List>
                    */}
-                    <ProgressBar/>
-                   
-                    </List>
- </PerfectScrollbar>
-                  
-           </div> 
-        
+                <ProgressBar />
+              </List>
+            </PerfectScrollbar>
+          </div>
         </Drawer>
 
         <Drawer
           variant="persistent"
-          anchor='right'
+          anchor="right"
           open={visibleHeader}
           onClose={this.toggleHeader}
         >
-          {visibleHeader ? <DicomHeader dcmViewer={dcmViewer} classes={classes} color={iconColor} /> : null}
+          {visibleHeader ? (
+            <DicomHeader
+              dcmViewer={dcmViewer}
+              classes={classes}
+              color={iconColor}
+            />
+          ) : null}
         </Drawer>
 
         <Drawer
           variant="persistent"
-          anchor='right'
+          anchor="right"
           open={visibleMeasure}
           onClose={this.toggleMeasure}
         >
-          <div style={{ marginTop: '48px' }}>
+          <div style={{ marginTop: "48px" }}>
             <Toolbar variant="dense">
               <Typography variant="subtitle1" className={classes.title}>
                 Measurements&nbsp;&nbsp;
               </Typography>
               <div className={classes.grow} />
               <IconButton color="inherit" onClick={this.saveMeasure} edge="end">
-                <Icon path={mdiContentSaveOutline} size={iconSize} color={iconColor} />
+                <Icon
+                  path={mdiContentSaveOutline}
+                  size={iconSize}
+                  color={iconColor}
+                />
               </IconButton>
-              <IconButton color="inherit" onClick={this.clearMeasure} edge="end">
-                <Icon path={mdiTrashCanOutline} size={iconSize} color={iconColor} />
+              <IconButton
+                color="inherit"
+                onClick={this.clearMeasure}
+                edge="end"
+              >
+                <Icon
+                  path={mdiTrashCanOutline}
+                  size={iconSize}
+                  color={iconColor}
+                />
               </IconButton>
             </Toolbar>
             <div>
-              {isOpen ? <Measurements dcmViewer={dcmViewer} toolRemove={this.toolRemove} classes={classes} /> : null}
+              {isOpen ? (
+                <Measurements
+                  dcmViewer={dcmViewer}
+                  toolRemove={this.toolRemove}
+                  classes={classes}
+                />
+              ) : null}
             </div>
           </div>
         </Drawer>
 
         <Drawer
           variant="persistent"
-          anchor='right'
-         open={visibleToolbox}
-
-      //  open={visibleMainMenu}
-      onClose={this.toggleToolbox}
-     //  onclose={this.toggleMainMenu}
+          anchor="right"
+          open={visibleToolbox}
+          //  open={visibleMainMenu}
+          onClose={this.toggleToolbox}
+          //  onclose={this.toggleMainMenu}
         >
-          <div style={{ marginTop: '48px' }}>
-            <div>
-              {isOpen ? <Histogram key={dcmViewer.filename} /> : null}
-            </div>
+          <div style={{ marginTop: "48px" }}>
+            <div>{isOpen ? <Histogram key={dcmViewer.filename} /> : null}</div>
           </div>
         </Drawer>
 
@@ -2360,7 +2922,12 @@ class App extends PureComponent {
         >
           <div>
             <div>
-              {visibleDicomdir ? <Dicomdir onOpenFile={this.handleOpenFileDicomdir} onOpenFs={this.handleOpenSandboxFs} /> : null}
+              {visibleDicomdir ? (
+                <Dicomdir
+                  onOpenFile={this.handleOpenFileDicomdir}
+                  onOpenFs={this.handleOpenSandboxFs}
+                />
+              ) : null}
             </div>
           </div>
         </Drawer>
@@ -2373,7 +2940,7 @@ class App extends PureComponent {
         >
           <div>
             <div>
-              {visibleFileManager ?
+              {visibleFileManager ? (
                 <FsUI
                   onOpen={this.handleOpenSandboxFs}
                   onOpenImage={this.handleOpenImage}
@@ -2381,54 +2948,58 @@ class App extends PureComponent {
                   onOpenDicomdir={this.handleOpenFsDicomdir}
                   color={iconColor}
                 />
-                : null}
+              ) : null}
             </div>
           </div>
           {/*   -------------------------------- End of Right Drawer ----------------------------------------------- */}
-     
         </Drawer>
 
         {visibleSettings ? <Settings onClose={this.hideSettings} /> : null}
 
         {visibleAbout ? <AboutDlg onClose={this.showAbout} /> : null}
 
-        {visibleDownloadZipDlg ? <DownloadZipDlg onClose={this.hideDownloadZipDlg} url={this.url} /> : null}
+        {visibleDownloadZipDlg ? (
+          <DownloadZipDlg onClose={this.hideDownloadZipDlg} url={this.url} />
+        ) : null}
 
-        {visibleOpenMultipleFilesDlg ? <OpenMultipleFilesDlg onClose={this.hideOpenMultipleFilesDlg} files={this.files} origin={'local'} /> : null}
+        {visibleOpenMultipleFilesDlg ? (
+          <OpenMultipleFilesDlg
+            onClose={this.hideOpenMultipleFilesDlg}
+            files={this.files}
+            origin={"local"}
+          />
+        ) : null}
 
         <Dialog
           open={visibleClearMeasureDlg}
           onClose={this.hideClearMeasureDlg}
         >
-          <DialogTitle>{"Are you sure to remove all the measurements?"}</DialogTitle>
+          <DialogTitle>
+            {"Are you sure to remove all the measurements?"}
+          </DialogTitle>
           <DialogActions>
-            <Button onClick={this.hideClearMeasureDlg}>
-              Cancel
-            </Button>
+            <Button onClick={this.hideClearMeasureDlg}>Cancel</Button>
             <Button onClick={this.confirmClearMeasureDlg} autoFocus>
               Ok
             </Button>
           </DialogActions>
         </Dialog>
 
-        <Dialog
-          open={visibleZippedFileDlg}
-          onClose={this.hideZippedFileDlg}
-        >
-          <DialogTitle>{"This is a zipped file, would you import into sandbox file system?"}</DialogTitle>
+        <Dialog open={visibleZippedFileDlg} onClose={this.hideZippedFileDlg}>
+          <DialogTitle>
+            {
+              "This is a zipped file, would you import into sandbox file system?"
+            }
+          </DialogTitle>
           <DialogActions>
-            <Button onClick={this.hideZippedFileDlg}>
-              Cancel
-            </Button>
+            <Button onClick={this.hideZippedFileDlg}>Cancel</Button>
             <Button onClick={this.confirmZippedFileDlg} autoFocus>
               Ok
             </Button>
           </DialogActions>
         </Dialog>
 
-        <Dialog
-          open={this.state.visibleOpenUrl}
-        >
+        <Dialog open={this.state.visibleOpenUrl}>
           <DialogTitle>{"Open URL"}</DialogTitle>
           <DialogContent>
             <DialogContentText>
@@ -2438,48 +3009,42 @@ class App extends PureComponent {
               autoFocus
               margin="dense"
               id="id-open-url"
-              inputRef={input => (this.openUrlField = input)}
+              inputRef={(input) => (this.openUrlField = input)}
               fullWidth
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => this.hideOpenUrl(false)} >
-              Cancel
-            </Button>
+            <Button onClick={() => this.hideOpenUrl(false)}>Cancel</Button>
             <Button onClick={() => this.hideOpenUrl(true)} autoFocus>
               Ok
             </Button>
           </DialogActions>
         </Dialog>
 
-        <Dialog
-          open={this.state.visibleMessage}
-        >
+        <Dialog open={this.state.visibleMessage}>
           <DialogTitle>{this.state.titleMessage}</DialogTitle>
           <DialogContent>
-            <DialogContentText>
-              {this.state.textMessage}
-            </DialogContentText>
+            <DialogContentText>{this.state.textMessage}</DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => this.setState({ visibleMessage: false })} >
+            <Button onClick={() => this.setState({ visibleMessage: false })}>
               Cancel
             </Button>
           </DialogActions>
         </Dialog>
 
         <Popover
-          id={'id-layout'}
+          id={"id-layout"}
           open={visibleLayout}
           anchorEl={this.state.anchorElLayout}
           onClose={this.closeLayout}
           anchorOrigin={{
-            vertical: 'center',
-            horizontal: 'right',
+            vertical: "center",
+            horizontal: "right",
           }}
           transformOrigin={{
-            vertical: 'center',
-            horizontal: 'left',
+            vertical: "center",
+            horizontal: "left",
           }}
         >
           <LayoutTool
@@ -2490,17 +3055,17 @@ class App extends PureComponent {
         </Popover>
 
         <Popover
-          id={'id-tools'}
+          id={"id-tools"}
           open={visibleToolsPanel}
           anchorEl={this.state.anchorElToolsPanel}
           onClose={this.closeToolsPanel}
           anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'right',
+            vertical: "bottom",
+            horizontal: "right",
           }}
           transformOrigin={{
-            vertical: 'top',
-            horizontal: 'center',
+            vertical: "top",
+            horizontal: "center",
           }}
         >
           <ToolsPanel
@@ -2514,33 +3079,33 @@ class App extends PureComponent {
 
         <Snackbar
           anchorOrigin={{
-            vertical: 'top',
-            horizontal: 'center',
+            vertical: "top",
+            horizontal: "center",
           }}
           open={visibleVolumeBuilding}
           autoHideDuration={6000}
           message="Volume building, wait please ..."
         />
 
-        <div style={{ height: 'calc(100vh - 48px)' }}>
+        <div style={{ height: "calc(100vh - 48px)" }}>
           {this.buildLayoutGrid()}
         </div>
 
         <Drawer
           variant="persistent"
-          anchor='right'
+          anchor="right"
           open={visibleExplorer}
           onClose={this.toggleExplorer}
         >
           <div>
             <div>
-              {visibleExplorer ?
+              {visibleExplorer ? (
                 <Explorer
                   explorer={this.explorer}
                   onSelectSeries={this.explorerOnSelectSeries}
                   color={iconColor}
                 />
-                : null}
+              ) : null}
             </div>
           </div>
         </Drawer>
@@ -2551,7 +3116,7 @@ class App extends PureComponent {
             id="file_open"
             style={{ display: "none" }}
             ref={this.fileOpen}
-            onChange={e => this.handleOpenLocalFs(e.target.files)}
+            onChange={(e) => this.handleOpenLocalFs(e.target.files)}
             multiple
           />
         </div>
@@ -2562,8 +3127,11 @@ class App extends PureComponent {
             id="file_dicomdir"
             style={{ display: "none" }}
             ref={this.openDicomdir}
-            onChange={e => this.handleOpenDicomdir(e.target.files)}
-            webkitdirectory="" mozdirectory="" directory="" multiple
+            onChange={(e) => this.handleOpenDicomdir(e.target.files)}
+            webkitdirectory=""
+            mozdirectory=""
+            directory=""
+            multiple
           />
         </div>
 
@@ -2573,13 +3141,15 @@ class App extends PureComponent {
             id="file_folder"
             style={{ display: "none" }}
             ref={this.openFolder}
-            onChange={e => this.handleOpenFolder(e.target.files)}
-            webkitdirectory="" mozdirectory="" directory="" multiple
+            onChange={(e) => this.handleOpenFolder(e.target.files)}
+            webkitdirectory=""
+            mozdirectory=""
+            directory=""
+            multiple
           />
         </div>
-
       </div>
-    )
+    );
   }
 }
 
@@ -2599,8 +3169,8 @@ const mapStateToProps = (state) => {
     layout: state.layout,
     dicomdir: state.dicomdir,
     fsZippedFile: state.fsZippedFile,
-  }
-}
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -2610,14 +3180,19 @@ const mapDispatchToProps = (dispatch) => {
     isOpenStore: (value) => dispatch(dcmIsOpen(value)),
     setActiveDcm: (dcm) => dispatch(activeDcm(dcm)),
     setActiveDcmIndex: (index) => dispatch(activeDcmIndex(index)),
-    setActiveMeasurements: (measurements) => dispatch(activeMeasurements(measurements)),
+    setActiveMeasurements: (measurements) =>
+      dispatch(activeMeasurements(measurements)),
     setLayoutStore: (row, col) => dispatch(setLayout(row, col)),
     setDicomdirStore: (dicomdir) => dispatch(setDicomdir(dicomdir)),
     setFsZippedFile: (file) => dispatch(setZippedFile(file)),
     setVolumeStore: (file) => dispatch(setVolume(file)),
     setFilesStore: (files) => dispatch(filesStore(files)),
-    setExplorerActiveSeriesIndex: (index) => dispatch(explorerActiveSeriesIndex(index)),
-  }
-}
+    setExplorerActiveSeriesIndex: (index) =>
+      dispatch(explorerActiveSeriesIndex(index)),
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(App))
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withStyles(styles)(App));
